@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfessoreService } from '../professore.service';
+import { Router } from '@angular/router';
+import { Professore } from '../professore';
 
 @Component({
   selector: 'app-professore-list',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfessoreListComponent implements OnInit {
 
-  constructor() { }
+  professori: Professore[];
+
+  constructor(private _professoriService: ProfessoreService,
+    private router: Router) { }
 
   ngOnInit() {
+    this.visualizzaListaProfessori()
   }
 
+  visualizzaListaProfessori() {
+    this._professoriService.getStudenti().subscribe(
+      (listStudenti) => {
+        this.professori = listStudenti;
+      }
+    );
+  }
+
+  rimuoviProfessore(codiceProfessore: string){
+    this._professoriService.removeProfessore(codiceProfessore)
+  }
+
+  createPage(){
+    this.router.navigate(['professori/nuovo']);
+  }
 }

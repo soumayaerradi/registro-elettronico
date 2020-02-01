@@ -8,31 +8,27 @@ import { Studente } from './studente';
 })
 export class StudenteService {
 
-  pathStudenti: Observable<any[]>
   studenti: Observable<any>;
   chiavissimeStronze: Observable<any>;
 
   constructor(public db: AngularFireDatabase) {
     this.studenti = db.list('studenti').valueChanges();
-    this.chiavissimeStronze = db.list('studenti').snapshotChanges();
-  }
-
-  getChiavi(): Observable<any[]>{
-    console.log("porcodio non riesco a estrarre queste cazzo di chiavi: " + this.chiavissimeStronze);
-    return (this.chiavissimeStronze);
   }
 
   getStudenti(): Observable<Studente[]> {
-    console.log("getStudenti: " + this.studenti);
     return (this.studenti);
   }
 
-  removeStudente(keyStud: string){
-    this.db.object(`/studenti/${keyStud}`).remove();
+  removeStudente(codiceStudente: string){
+    this.db.object(`/studenti/${codiceStudente}`).remove();
   }
 
   addStudente(newStudente: Studente) {
-    this.db.list('studenti/').update("bviyvuv", newStudente);
+    this.db.list('studenti/').update(newStudente.codiceFisc, newStudente);
+  }
+
+  addNotaStudente(updatedStudente: Studente){
+    this.db.list(`/studenti/${updatedStudente.codiceFisc}`).update('note', updatedStudente.note);
   }
 
 }

@@ -1,13 +1,10 @@
 <h3>Studenti</h3>
 <pre *ngFor="let studente of studenti">
-  {{studente.nome}}
+  <h3 (click)="selectStudente(studente)">{{studente.nome}}</h3>
   {{studente.cognome}}
   {{studente.codiceFisc}}
   {{studente.dataNascita}}
   {{studente.percorsoStudi}}
-  <button (click)="removeStudente()">Remove</button>
+  <button (click)="removeStudente(studente.codiceFisc)">Remove</button>
 </pre>
-
-
-<button (click)="getKeys()">VEDI KEYS</button>
-<button (click)="addStudente()">Aggiungi</button>
+<button (click)="addStudente()">Crea un nuovo studente</button>

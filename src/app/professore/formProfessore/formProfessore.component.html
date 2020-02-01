@@ -1,0 +1,41 @@
+<h3>Crea un nuovo professore</h3>
+<form [formGroup]="nuovoProfessore" (ngSubmit)="onSubmit(nuovoProfessore.value)">
+  <div>
+    <label for="nome">
+      Nome
+    </label>
+    <input id="nome"  type="text" formControlName="nome">
+  </div>
+  <div>
+    <label for="cognome">
+      Cognome
+    </label>
+    <input id="cognome"  type="text" formControlName="cognome">
+  </div>
+  <div>
+    <label for="materia">
+      Materia
+    </label>
+    <input id="materia"  type="text" formControlName="materia">
+  </div>
+  <div>
+    <label for="sesso">
+      Sesso
+    </label>
+    <input id="sesso"  type="text" formControlName="sesso">
+  </div>
+  <div>
+    <label for="telefono">
+      Telefono
+    </label>
+    <input id="telefono"  type="text" formControlName="telefono">
+  </div>
+  <div>
+    <label for="codiceFisc">
+      Codice Fiscale
+    </label>
+    <input id="codiceFisc"  type="text" formControlName="codiceFisc">
+  </div>
+
+  <button type="submit">Crea Nuovo professore</button>
+</form>

@@ -1,3 +1,12 @@
-<p>
-  professore-list works!
-</p>
+<h3>Lista Professori</h3>
+<pre *ngFor="let professore of professori">
+  <h3>{{professore.nome}}</h3>
+  {{professore.cognome}}
+  {{professore.materia}}
+  {{professore.sesso}}
+  {{professore.telefono}}
+  {{professore.codiceFisc}}
+  <button (click)="rimuoviProfessore(professore.codiceFisc)">Rimuovi</button>
+</pre>
+
+<button (click)="createPage()">Crea nuovo professore</button>

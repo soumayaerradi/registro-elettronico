@@ -4,8 +4,8 @@ export class Studente {
   citta: string;
   dataNascita: string;
   codiceFisc: string;
-  note: string[];
+  note: string[] = [];
   percorsoStudi: string;
-  storicoLezioni: {};
+  storicoLezioni: {} = {};
   telefono: number;
 }
