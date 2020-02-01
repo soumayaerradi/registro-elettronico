@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDK5twHL3oanUJSM072_ZPsatd-BPmATvU',
+    authDomain: 'registroelettronicodigital.firebaseapp.com',
+    databaseURL: 'https://registroelettronicodigital.firebaseio.com',
+    projectId: 'registroelettronicodigital',
+    storageBucket: 'registroelettronicodigital.appspot.com',
+    messagingSenderId: '1005062730512',
+    appId: '1:1005062730512:web:017649e9795d9ea9b02b95'
+  }
 };
 
 /*

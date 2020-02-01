@@ -1,0 +1,13 @@
+<h3>Studenti</h3>
+<pre *ngFor="let studente of studenti">
+  {{studente.nome}}
+  {{studente.cognome}}
+  {{studente.codiceFisc}}
+  {{studente.dataNascita}}
+  {{studente.percorsoStudi}}
+  <button (click)="removeStudente()">Remove</button>
+</pre>
+
+
+<button (click)="getKeys()">VEDI KEYS</button>
+<button (click)="addStudente()">Aggiungi</button>
