@@ -8,11 +8,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormProfessoreComponent } from './formProfessore/formProfessore.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfessoreDettaglioComponent } from './professore-dettaglio/professore-dettaglio.component';
+import { ProfessoreModificaComponent } from './professore-modifica/professore-modifica.component';
 
 const routes: Routes = [
   { path: '', component: ProfessoreListComponent },
   { path: 'nuovo', component: FormProfessoreComponent },
   { path: 'dettaglio/:codiceFisc', component: ProfessoreDettaglioComponent },
+  { path: 'modifica/:codiceFisc', component: ProfessoreModificaComponent}
 ]
 
 @NgModule({
@@ -20,6 +22,7 @@ const routes: Routes = [
     ProfessoreListComponent,
     ProfessoreDettaglioComponent,
     FormProfessoreComponent,
+    ProfessoreModificaComponent,
   ],
   imports: [
     CommonModule,
