@@ -1,0 +1,46 @@
+<h3>Aggiorna Studente</h3>
+<form [formGroup]="modificaStudente" (ngSubmit)="onSubmit(modificaStudente.value)">
+  <div>
+    <label for="nome">
+      Nome
+    </label>
+    <input id="nome"  type="text" formControlName="nome">
+  </div>
+  <div>
+    <label for="cognome">
+      Cognome
+    </label>
+    <input id="cognome"  type="text" formControlName="cognome">
+  </div>
+  <div>
+    <label for="dataNascita">
+      Data di Nascita
+    </label>
+    <input id="dataNascita"  type="text" formControlName="dataNascita">
+  </div>
+  <div>
+    <label for="codiceFisc">
+      Codice Fiscale
+    </label>
+    <input id="codiceFisc"  type="text" formControlName="codiceFisc">
+  </div>
+  <div>
+    <label for="percorsoStudi">
+      Percorso di Studi
+    </label>
+    <input id="percorsoStudi"  type="text" formControlName="percorsoStudi">
+  </div>
+  <div>
+    <label for="telefono">
+      Telefono
+    </label>
+    <input id="telefono"  type="text" formControlName="telefono">
+  </div>
+  <div>
+    <label for="citta">
+      Città di residenza
+    </label>
+    <input id="citta"  type="text" formControlName="citta">
+  </div>
+  <button type="submit">Aggiorna Studente</button>
+</form>

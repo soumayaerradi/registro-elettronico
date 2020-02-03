@@ -8,11 +8,13 @@ import { StudenteDettaglioComponent } from './studente-dettaglio/studente-dettag
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormStudenteComponent } from './formStudente/formStudente.component';
+import { StudenteModificaComponent } from './studente-modifica/studente-modifica.component';
 
 const routes: Routes = [
   { path: '', component: StudentiListComponent },
   { path: 'nuovo', component: FormStudenteComponent },
   { path: 'dettaglio/:codiceFisc', component: StudenteDettaglioComponent },
+  { path: 'modifica/:codiceFisc', component: StudenteModificaComponent}
 ]
 
 @NgModule({
@@ -20,6 +22,7 @@ const routes: Routes = [
     StudentiListComponent,
     StudenteDettaglioComponent,
     FormStudenteComponent,
+    StudenteModificaComponent,
   ],
   imports: [
     CommonModule,

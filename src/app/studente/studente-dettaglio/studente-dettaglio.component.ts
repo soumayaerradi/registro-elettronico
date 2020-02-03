@@ -46,7 +46,5 @@ export class StudenteDettaglioComponent implements OnInit {
     }
     this.studente.note.push(nuovaNota['nota']);
     this._studenteService.aggiornaStudente(this.studente);
-
   }
-
 }
