@@ -16,7 +16,7 @@ export class StudenteService {
   }
 
   getStudenti(): Observable<Studente[]> {
-    return (this.studenti);
+    return this.studenti;
   }
 
   removeStudente(codiceStudente: string){

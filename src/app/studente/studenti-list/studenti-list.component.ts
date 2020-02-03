@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudenteService } from '../studente.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Studente } from '../studente';
-import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,10 +35,10 @@ export class StudentiListComponent implements OnInit {
   }
 
   addStudente() {
-    this.router.navigate(['/studenti/nuovo'])
+    this.router.navigate(['/studenti/nuovo']);
   }
 
   selectStudente(selectedStudente: Studente){
-    console.log(selectedStudente)
+    console.log(selectedStudente);
   }
 }
