@@ -7,5 +7,22 @@
   {{professore.sesso}}
   {{professore.telefono}}
   {{professore.codiceFisc}}
-  {{professore}}
 </pre>
+
+<div>
+  <ul>
+      <li *ngFor="let n of professore.note">
+          {{n}} <button (click)="eliminaNota(professore.note.indexOf(n))">X</button>
+      </li>
+  </ul>
+</div>
+
+<form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
+  <div>
+      <label for="nota">
+          nota:
+      </label>
+      <input id="nota" type="text" formControlName="nota">
+  </div>
+  <button type="submit">SALVA</button>
+</form>

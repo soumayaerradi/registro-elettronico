@@ -5,14 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBxHVE74OshKS_vU3RC9zWgYu5YZEbQ7cc",
-    authDomain: "registro-c23d8.firebaseapp.com",
-    databaseURL: "https://registro-c23d8.firebaseio.com",
-    projectId: "registro-c23d8",
-    storageBucket: "registro-c23d8.appspot.com",
-    messagingSenderId: "807556670318",
-    appId: "1:807556670318:web:ae2ba3ec82cc7e0c00177f",
-    measurementId: "G-FPC7V17TSE",
+    apiKey: "AIzaSyDK5twHL3oanUJSM072_ZPsatd-BPmATvU",
+    authDomain: "registroelettronicodigital.firebaseapp.com",
+    databaseURL: "https://registroelettronicodigital.firebaseio.com",
+    projectId: "registroelettronicodigital",
+    storageBucket: "registroelettronicodigital.appspot.com",
+    messagingSenderId: "1005062730512",
+    appId: "1:1005062730512:web:017649e9795d9ea9b02b95"
   }
 };
 

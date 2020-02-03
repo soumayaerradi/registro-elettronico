@@ -28,27 +28,25 @@ export class StudenteDettaglioComponent implements OnInit {
     this.getStudente();
   }
 
-
   getStudente() {
     const codice: string = this._route.snapshot.paramMap.get('codiceFisc');
-    console.log(codice);
     this._studenteService.getStudente(codice).subscribe((std: Studente) => {
-      console.log(std);
-      console.log(typeof std);
       this.studente = std;
     });
   }
 
-  eliminaNota(index: number){
-    console.log(index);
+  eliminaNota(index: number) {
     this.studente.note.splice(index, 1);
     this._studenteService.aggiornaStudente(this.studente);
   }
 
   onSubmit(nuovaNota: any) {
+    if (this.studente.note == undefined) {
+      this.studente.note = [];
+    }
     this.studente.note.push(nuovaNota['nota']);
     this._studenteService.aggiornaStudente(this.studente);
-    //this.router.navigate(['/studenti']);
-  } 
+
+  }
 
 }

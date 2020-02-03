@@ -26,7 +26,7 @@ export class ProfessoreService {
     this.db.object(`/professori/${codiceProfessore}`).remove();
   }
 
-  addProfessore(newProfessore: Professore) {
+  aggiornaProfessore(newProfessore: Professore) {
     this.db.list('professori/').update(newProfessore.codiceFisc, newProfessore);
   }
 }

@@ -15,7 +15,7 @@ export class FormProfessoreComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private _professoreService: ProfessoreService,
-    private router: Router) { 
+    private router: Router) {
 
     this.nuovoProfessore = this.formBuilder.group({
       nome: '',
@@ -28,7 +28,7 @@ export class FormProfessoreComponent implements OnInit {
   }
 
   onSubmit(nuovoProfessore: Professore){
-    this._professoreService.addProfessore(nuovoProfessore);
+    this._professoreService.aggiornaProfessore(nuovoProfessore);
     this.router.navigate(['/professori'])
   }
 
