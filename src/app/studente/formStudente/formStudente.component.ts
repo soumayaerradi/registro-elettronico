@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Studente } from '../studente';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { StudenteService } from '../studente.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class FormStudenteComponent implements OnInit {
 
-  nuovoStudente;
+  nuovoStudente: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
     private _studentiService: StudenteService,
@@ -25,11 +25,11 @@ export class FormStudenteComponent implements OnInit {
       percorsoStudi: '',
       telefono: '',
       citta: '',
-    })
+    });
   }
 
   onSubmit(nuovoStudente: Studente){
-    this._studentiService.addStudente(nuovoStudente);
+    this._studentiService.aggiornaStudente(nuovoStudente);
     this.router.navigate(['/studenti'])
   }
 

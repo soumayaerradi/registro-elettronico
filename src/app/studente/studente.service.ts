@@ -9,7 +9,6 @@ import { Studente } from './studente';
 export class StudenteService {
 
   studenti: Observable<any>;
-  chiavissimeStronze: Observable<any>;
 
   constructor(public db: AngularFireDatabase) {
     this.studenti = db.list('studenti').valueChanges();
@@ -19,16 +18,16 @@ export class StudenteService {
     return this.studenti;
   }
 
+  getStudente(codiceFisc: string): Observable<any> {
+    return this.db.object(`studenti/${codiceFisc}`).valueChanges();
+  }
+
   removeStudente(codiceStudente: string){
     this.db.object(`/studenti/${codiceStudente}`).remove();
   }
 
-  addStudente(newStudente: Studente) {
-    this.db.list('studenti/').update(newStudente.codiceFisc, newStudente);
-  }
-
-  addNotaStudente(updatedStudente: Studente){
-    this.db.list(`/studenti/${updatedStudente.codiceFisc}`).update('note', updatedStudente.note);
+  aggiornaStudente(std: Studente){
+    this.db.list(`studenti/`).update(std.codiceFisc ,std);
   }
 
 }

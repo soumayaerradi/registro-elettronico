@@ -9,18 +9,21 @@ import { Professore } from './professore';
 export class ProfessoreService {
 
   professori: Observable<any>;
-  chiavissimeStronze: Observable<any>;
 
   constructor(public db: AngularFireDatabase) {
     this.professori = db.list('professori').valueChanges();
   }
 
-  getStudenti(): Observable<Professore[]> {
+  getProfessori(): Observable<Professore[]> {
     return (this.professori);
   }
 
-  removeProfessore(codiceStudente: string){
-    this.db.object(`/professori/${codiceStudente}`).remove();
+  getProfessore(codiceFisc: string) {
+    return this.db.object(`professori/${codiceFisc}`).valueChanges();
+  }
+
+  removeProfessore(codiceProfessore: string){
+    this.db.object(`/professori/${codiceProfessore}`).remove();
   }
 
   addProfessore(newProfessore: Professore) {

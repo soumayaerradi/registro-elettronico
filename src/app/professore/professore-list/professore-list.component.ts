@@ -20,9 +20,9 @@ export class ProfessoreListComponent implements OnInit {
   }
 
   visualizzaListaProfessori() {
-    this._professoriService.getStudenti().subscribe(
-      (listStudenti) => {
-        this.professori = listStudenti;
+    this._professoriService.getProfessori().subscribe(
+      (listaProfessori) => {
+        this.professori = listaProfessori;
       }
     );
   }

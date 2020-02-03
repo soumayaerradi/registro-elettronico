@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProfessoreService } from '../professore.service';
 import { Router } from '@angular/router';
 import { Professore } from '../professore';
@@ -11,7 +11,7 @@ import { Professore } from '../professore';
 })
 export class FormProfessoreComponent implements OnInit {
 
-  nuovoProfessore;
+  nuovoProfessore: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
     private _professoreService: ProfessoreService,

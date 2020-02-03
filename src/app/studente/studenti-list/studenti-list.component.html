@@ -1,11 +1,8 @@
 <h3>Studenti</h3>
 <pre *ngFor="let studente of studenti">
-  <h3 (click)="selectStudente(studente)">{{studente.nome}}</h3>
+<h3 routerLink='dettaglio/{{studente.codiceFisc}}'>{{studente.nome}}</h3>
   {{studente.cognome}}
   {{studente.codiceFisc}}
-  {{studente.dataNascita}}
-  {{studente.percorsoStudi}}
-  {{studente.citta}}
   <button (click)="removeStudente(studente.codiceFisc)">Remove</button>
 </pre>
 <button (click)="addStudente()">Crea un nuovo studente</button>

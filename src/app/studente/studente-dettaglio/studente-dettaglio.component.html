@@ -1,2 +1,29 @@
-<h2>Dettaglio Studente</h2>
+<h2>Dettaglio Studente </h2>
 
+<div>
+    <pre>
+        {{studente.nome}}
+        {{studente.cognome}}
+        {{studente.citta}}
+        {{studente.codiceFisc}}
+        {{studente.percorsoStudi}}
+        {{studente.telefono}}
+        {{studente.dataNascita}}
+        {{studente.storicoLezioni}}
+    </pre>
+    <ul>
+        <li *ngFor="let n of studente.note">
+            {{n}} <button (click)="eliminaNota(studente.note.indexOf(n))">X</button>
+        </li>
+    </ul>
+</div>
+
+<form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
+    <div>
+        <label for="nota">
+            nota:
+        </label>
+        <input id="nota" type="text" formControlName="nota">
+    </div>
+    <button type="submit">SALVA</button>
+</form>

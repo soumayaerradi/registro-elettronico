@@ -7,15 +7,18 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormProfessoreComponent } from './formProfessore/formProfessore.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfessoreDettaglioComponent } from './professore-dettaglio/professore-dettaglio.component';
 
 const routes: Routes = [
   { path: '', component: ProfessoreListComponent },
-  { path: 'nuovo', component: FormProfessoreComponent }
+  { path: 'nuovo', component: FormProfessoreComponent },
+  { path: 'dettaglio/:codiceFisc', component: ProfessoreDettaglioComponent },
 ]
 
 @NgModule({
   declarations: [
     ProfessoreListComponent,
+    ProfessoreDettaglioComponent,
     FormProfessoreComponent,
   ],
   imports: [

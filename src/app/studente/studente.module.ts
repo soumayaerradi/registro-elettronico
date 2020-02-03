@@ -12,7 +12,7 @@ import { FormStudenteComponent } from './formStudente/formStudente.component';
 const routes: Routes = [
   { path: '', component: StudentiListComponent },
   { path: 'nuovo', component: FormStudenteComponent },
-  { path: 'dettaglio', component: StudenteDettaglioComponent }
+  { path: 'dettaglio/:codiceFisc', component: StudenteDettaglioComponent },
 ]
 
 @NgModule({
