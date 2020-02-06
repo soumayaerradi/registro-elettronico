@@ -11,6 +11,7 @@ import { Professore } from '../professore';
 export class ProfessoreListComponent implements OnInit {
 
   professori: Professore[];
+  displayedColumns: string[] = ['position', 'nome', 'cognome', 'materia', 'azioni'];
 
   constructor(private _professoriService: ProfessoreService,
     private router: Router) { }

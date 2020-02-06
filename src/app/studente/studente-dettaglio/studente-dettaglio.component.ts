@@ -3,6 +3,7 @@ import { Studente } from '../studente';
 import { StudenteService } from '../studente.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-studente-dettaglio',
@@ -17,7 +18,8 @@ export class StudenteDettaglioComponent implements OnInit {
   constructor(
     private _studenteService: StudenteService,
     private _route: ActivatedRoute,
-    private _formBuilder: FormBuilder) {
+    private _formBuilder: FormBuilder,
+    private _location: Location) {
 
     this.nuovaNota = this._formBuilder.group({
       nota: '',
@@ -46,5 +48,9 @@ export class StudenteDettaglioComponent implements OnInit {
     }
     this.studente.note.push(nuovaNota['nota']);
     this._studenteService.aggiornaStudente(this.studente);
+  }
+
+  goBack() {
+    this._location.back();
   }
 }

@@ -1,41 +1,62 @@
-<h3>Crea un nuovo professore</h3>
-<form [formGroup]="nuovoProfessore" (ngSubmit)="onSubmit(nuovoProfessore.value)">
+<h3 style="padding: 20px;">Crea un nuovo professore</h3>
+<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+<form [formGroup]="nuovoProfessore" (ngSubmit)="onSubmit(nuovoProfessore.value)" style="padding: 40px;">
   <div>
     <label for="nome">
       Nome
     </label>
-    <input id="nome"  type="text" formControlName="nome">
+    <mat-form-field class="input">
+    <input matInput id="nome"  type="text" formControlName="nome">
+    <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+      <span *ngIf="nome.errors.required">Campo obbligatorio</span>
+    </mat-error>
+  </mat-form-field>
   </div>
   <div>
     <label for="cognome">
       Cognome
     </label>
-    <input id="cognome"  type="text" formControlName="cognome">
-  </div>
-  <div>
-    <label for="materia">
-      Materia
-    </label>
-    <input id="materia"  type="text" formControlName="materia">
-  </div>
-  <div>
-    <label for="sesso">
-      Sesso
-    </label>
-    <input id="sesso"  type="text" formControlName="sesso">
-  </div>
-  <div>
-    <label for="telefono">
-      Telefono
-    </label>
-    <input id="telefono"  type="text" formControlName="telefono">
+    <mat-form-field class="input">
+    <input matInput id="cognome"  type="text" formControlName="cognome">
+    <mat-error *ngIf="cognome.invalid && (cognome.dirty || cognome.touched)">
+      <span *ngIf="cognome.errors.required">Campo obbligatorio</span>
+    </mat-error>
+  </mat-form-field>
   </div>
   <div>
     <label for="codiceFisc">
       Codice Fiscale
     </label>
-    <input id="codiceFisc"  type="text" formControlName="codiceFisc">
+    <mat-form-field class="input">
+    <input matInput id="codiceFisc"  type="text" formControlName="codiceFisc">
+    <mat-error *ngIf="codiceFisc.invalid && (codiceFisc.dirty || codiceFisc.touched)">
+      <span *ngIf="codiceFisc.errors.required">Campo obbligatorio</span>
+    </mat-error>
+  </mat-form-field>
   </div>
-
-  <button type="submit">Crea Nuovo professore</button>
+  <div>
+    <label for="sesso">
+      Sesso
+    </label>
+    <mat-form-field class="input">
+    <input matInput id="sesso"  type="text" formControlName="sesso">
+  </mat-form-field>
+  </div>
+  <div>
+    <label for="materia">
+      Materia
+    </label>
+    <mat-form-field class="input">
+    <input matInput id="materia"  type="text" formControlName="materia">
+  </mat-form-field>
+  </div>
+  <div>
+    <label for="telefono">
+      Telefono
+    </label>
+    <mat-form-field class="input">
+    <input matInput id="telefono"  type="text" formControlName="telefono">
+  </mat-form-field>
+  </div>
+  <button mat-flat-button type="submit" class="nuovo">Crea Nuovo Professore</button>
 </form>

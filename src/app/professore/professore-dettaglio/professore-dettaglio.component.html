@@ -1,28 +1,38 @@
-<p>
-  professore-dettaglio
-</p>
-
-<pre>
-  {{professore.materia}}
-  {{professore.sesso}}
-  {{professore.telefono}}
-  {{professore.codiceFisc}}
-</pre>
-<button routerLink="../../modifica/{{professore.codiceFisc}}">Modifica</button>
+<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+<body style="padding: 50px;">
+<h2>Professore</h2>
+<mat-list>
+  <mat-list-item>Nome:  {{professore.nome}}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Cognome:  {{professore.cognome}}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Codice fiscale:  {{professore.codiceFisc}}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Materia:  {{professore.materia}}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Telefono:  {{professore.telefono}}</mat-list-item>
+</mat-list>
+<br>
+<button mat-button routerLink="../../modifica/{{professore.codiceFisc}}">Modifica</button>
+<br><br><br>
+<h4>Note</h4>
 <div>
   <ul>
-      <li *ngFor="let n of professore.note">
-          {{n}} <button (click)="eliminaNota(professore.note.indexOf(n))">X</button>
-      </li>
+    <li *ngFor="let n of professore.note">
+      {{n}}   <button mat-button (click)="eliminaNota(professore.note.indexOf(n))">Elimina</button>
+    </li>
   </ul>
 </div>
 
 <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
   <div>
-      <label for="nota">
-          nota:
-      </label>
-      <input id="nota" type="text" formControlName="nota">
+    <label for="nota">
+      Nota:
+    </label>
+    <mat-form-field>
+    <input matInput id="nota" type="text" formControlName="nota">
+  </mat-form-field>
   </div>
-  <button type="submit">SALVA</button>
+  <button mat-flat-button type="submit">SALVA NOTA</button>
 </form>
+</body>

@@ -15,6 +15,7 @@ export class ProfessoreService {
   }
 
   getProfessori(): Observable<Professore[]> {
+    this.professori = this.db.list('professori').valueChanges();
     return (this.professori);
   }
 

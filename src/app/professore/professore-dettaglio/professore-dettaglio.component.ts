@@ -3,6 +3,7 @@ import { ProfessoreService } from '../professore.service';
 import { ActivatedRoute } from '@angular/router';
 import { Professore } from '../professore';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-professore-dettaglio',
@@ -17,7 +18,8 @@ export class ProfessoreDettaglioComponent implements OnInit {
   constructor(
     private _professoreService: ProfessoreService,
     private _route: ActivatedRoute,
-    private _formBuilder: FormBuilder) {
+    private _formBuilder: FormBuilder,
+    private _location: Location) {
     this.nuovaNota = this._formBuilder.group({
       nota: '',
     });
@@ -32,6 +34,7 @@ export class ProfessoreDettaglioComponent implements OnInit {
     this._professoreService.getProfessore(codice).subscribe((profe: Professore) => {
       this.professore = profe;
     });
+    console.log(this.professore);
   }
 
   eliminaNota(index: number) {
@@ -45,6 +48,10 @@ export class ProfessoreDettaglioComponent implements OnInit {
     }
     this.professore.note.push(nuovaNota['nota']);
     this._professoreService.aggiornaProfessore(this.professore);
+  }
+
+  goBack() {
+    this._location.back();
   }
 
 }

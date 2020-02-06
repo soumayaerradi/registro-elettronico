@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { ProfessoreService } from '../professore.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Professore } from '../professore';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-professore-modifica',
@@ -17,15 +18,16 @@ export class ProfessoreModificaComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private _professoreService: ProfessoreService,
     private _route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private _location: Location) {
 
     this.modificaProfessore = this.formBuilder.group({
-      nome: '',
-      cognome: '',
+      nome: ['', Validators.required],
+      cognome: ['', Validators.required],
       materia: '',
       sesso: '',
       telefono: '',
-      codiceFisc: '',
+      codiceFisc: ['', Validators.required],
     })
   }
 
@@ -56,6 +58,22 @@ export class ProfessoreModificaComponent implements OnInit {
   onSubmit(aggiornaProfessore: Professore) {
     this._professoreService.aggiornaProfessore(aggiornaProfessore);
     this.router.navigate(['/professori']);
+  }
+
+  goBack() {
+    this._location.back();
+  }
+
+  get nome(): AbstractControl {
+    return this.modificaProfessore.get('nome');
+  }
+
+  get cognome(): AbstractControl {
+    return this.modificaProfessore.get('cognome');
+  }
+
+  get codiceFisc(): AbstractControl {
+    return this.modificaProfessore.get('codiceFisc');
   }
 
 }

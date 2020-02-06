@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class StudentiListComponent implements OnInit {
 
   studenti: Studente[];
+  displayedColumns: string[] = ['position', 'nome', 'cognome', 'sesso', 'dataNascita', 'codiceFisc', 'azioni'];
+  opened: boolean;
+  title = 'Registro Digitale';
 
   constructor(private _serviceStudenti: StudenteService,
     private router: Router) { }

@@ -18,6 +18,9 @@ import {
   CalendarView
 } from 'angular-calendar';
 import { Router } from '@angular/router';
+import { start } from 'repl';
+import { element } from 'protractor';
+import { CalendarioService } from '../calendario.service';
 
 const colors: any = {
   red: {
@@ -54,11 +57,11 @@ export class CalendarioComponent {
 
   events: CalendarEvent[] = [];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
-  
-
-  constructor(private modal: NgbModal, private router: Router) { }
+  constructor(private modal: NgbModal, 
+              private router: Router,
+              private _calendarioService: CalendarioService) { }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -114,10 +117,41 @@ export class CalendarioComponent {
         }
       }
     ];
+    console.log(this.events)
+  }
+
+  salvaEvento() {
+    let updateList: any[] = [];
+    this.events.forEach((evt) => {
+      updateList.push(
+        {
+          id: evt.id,
+          title: evt.title,
+          prof: evt.prof,
+          start: evt.start.toString(),
+          end: evt.end.toString(),
+          color: evt.color,
+          draggable: true,
+          resizable: evt.resizable,
+        }
+      )
+    });
+
+    this._calendarioService.aggiornaCalendario(updateList);
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter(event => event !== eventToDelete);
+    let i: any;
+    this.events.forEach((evt, index) => {
+      if (evt.id == eventToDelete.id) {
+        i = index;
+      }
+    });
+    console.log("index: " + i);
+    this.events.splice(i, 1);
+
+    this._calendarioService.removeCalendario();
+    this._calendarioService.aggiornaCalendario(this.events);
   }
 
   closeOpenMonthViewDay() {
@@ -126,6 +160,34 @@ export class CalendarioComponent {
 
   genId(events: CalendarEvent[]): number {
     return events.length > 0 ? Math.max(...events.map(event => event.id)) + 1 : 1;
+  }
+
+  getEventi() {
+    this._calendarioService.getEvents().subscribe(
+      (events) => {
+        this.events = [];
+        events.forEach(evt => {
+          this.events.push(
+            {
+              id: evt.id,
+              title: evt.title,
+              prof: evt.prof,
+              start: new Date(evt.start),
+              end: new Date(evt.end),
+              color: evt.color,
+              draggable: true,
+              resizable: evt.resizable,
+            }
+          )
+        });
+        this.refresh.next();
+      }
+    )
+  }
+
+  ngOnInit() {
+    this.getEventi();
+    console.log(this.events);
   }
 
 }

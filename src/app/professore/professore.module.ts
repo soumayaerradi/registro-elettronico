@@ -9,6 +9,14 @@ import { FormProfessoreComponent } from './formProfessore/formProfessore.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfessoreDettaglioComponent } from './professore-dettaglio/professore-dettaglio.component';
 import { ProfessoreModificaComponent } from './professore-modifica/professore-modifica.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const routes: Routes = [
   { path: '', component: ProfessoreListComponent },
@@ -30,7 +38,16 @@ const routes: Routes = [
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatDividerModule,
+    MatListModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatToolbarModule
   ]
 })
 export class ProfessoreModule { }

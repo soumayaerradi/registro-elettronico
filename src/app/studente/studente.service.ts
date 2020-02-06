@@ -15,6 +15,7 @@ export class StudenteService {
   }
 
   getStudenti(): Observable<Studente[]> {
+    this.studenti = this.db.list('studenti').valueChanges();
     return this.studenti;
   }
 

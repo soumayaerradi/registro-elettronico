@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { ProfessoreService } from '../professore.service';
 import { Router } from '@angular/router';
 import { Professore } from '../professore';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-formProfessore',
@@ -15,15 +16,16 @@ export class FormProfessoreComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private _professoreService: ProfessoreService,
-    private router: Router) {
+    private router: Router,
+    private _location: Location) {
 
     this.nuovoProfessore = this.formBuilder.group({
-      nome: '',
-      cognome: '',
+      nome: ['', Validators.required],
+      cognome: ['', Validators.required],
       materia: '',
       sesso: '',
       telefono: '',
-      codiceFisc: '',
+      codiceFisc: ['', Validators.required],
     })
   }
 
@@ -33,6 +35,22 @@ export class FormProfessoreComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  goBack() {
+    this._location.back();
+  }
+
+  get nome(): AbstractControl {
+    return this.nuovoProfessore.get('nome');
+  }
+
+  get cognome(): AbstractControl {
+    return this.nuovoProfessore.get('cognome');
+  }
+
+  get codiceFisc(): AbstractControl {
+    return this.nuovoProfessore.get('codiceFisc');
   }
 
 }

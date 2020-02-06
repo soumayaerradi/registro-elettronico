@@ -9,6 +9,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormStudenteComponent } from './formStudente/formStudente.component';
 import { StudenteModificaComponent } from './studente-modifica/studente-modifica.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule, MatFormFieldModule, MatListModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 const routes: Routes = [
   { path: '', component: StudentiListComponent },
@@ -30,7 +35,14 @@ const routes: Routes = [
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatSidenavModule
   ]
 })
 export class StudenteModule { }
