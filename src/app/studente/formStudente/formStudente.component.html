@@ -1,6 +1,7 @@
-<h3>Crea un nuovo studente</h3>
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
-<form [formGroup]="nuovoStudente" (ngSubmit)="onSubmit(nuovoStudente.value)" style="padding: 40px;">
+<body style="padding: 50px;">
+<h3>Crea un nuovo studente</h3>
+<form [formGroup]="nuovoStudente" (ngSubmit)="onSubmit(nuovoStudente.value)">
   <div>
     <label for="nome">
       Nome
@@ -68,3 +69,4 @@
   </div>
   <button mat-flat-button type="submit" class="nuovo">Crea Nuovo Studente</button>
 </form>
+</body>

@@ -1,24 +1,28 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-<!-- <div class="example-container" style="padding: 20px">
-  <h1 routerLink="home">{{title}}</h1>
+
+<div class="example-container" style="padding: 20px" *ngIf="authentication; else login">
+  <h1 routerLink="calendario" class="title">{{title}}</h1>
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
       <mat-nav-list>
-        <a routerLink="studenti">Studenti</a>
+        <button mat-button routerLink="studenti" class="side-nav">Studenti</button>
         <br>
-        <a routerLink="professori">Professori</a>
+        <button mat-button routerLink="professori" class="side-nav">Professori</button>
         <br>
-        <a routerLink="calendario">Calendario</a>
+        <button mat-button routerLink="materie" class="side-nav">Materie</button>
+        <br>
+        <button mat-button routerLink="calendario" class="side-nav">Calendario</button>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
-        Menu
       </button>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div> -->
+</div>
 
-<router-outlet></router-outlet>
+<ng-template #login>
+  <app-login (click)="getAuthentication()"></app-login>
+</ng-template>

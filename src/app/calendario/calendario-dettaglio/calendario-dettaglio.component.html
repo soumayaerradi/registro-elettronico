@@ -1,2 +1,32 @@
-<button mat-flat-button color="primary" (click)="goBack()">Indietro</button>
+<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+<body style="padding: 50px;">
+<div class="detial">
+    <pre>
+        LEZIONE
 
+        Materia: {{evento.title}}
+        Professore: {{evento.prof}}
+        Inizio: {{evento.start.toString().slice(0, 21)}}
+        Fine: {{evento.end.toString().slice(0, 21)}}
+    </pre>
+</div>
+
+<div>
+    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
+        <div>
+            <label for="nota">
+                Aggiungi nota:
+            </label>
+            <mat-form-field>
+                <input matInput id="nota" type="text" formControlName="nota">
+            </mat-form-field>
+                <button mat-flat-button type="submit">SALVA</button>
+        </div>
+    </form>
+</div>
+
+<h4>Note: </h4>
+<pre *ngFor="let nota of evento.note">
+  - {{nota}} <button mat-flat-button (click)="removeNota(evento.note.indexOf(nota))">Elimina</button>
+</pre>
+</body>

@@ -18,8 +18,8 @@
   <br />
   <div [ngSwitch]="view">
     <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
-      [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
-      (eventClicked)="eventClicked($event)" (eventTimesChanged)="eventTimesChanged($event)" >
+      [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day); getEventiGiornalieri()"
+      (eventClicked)="eventClicked($event)" (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-month-view>
   </div>
 </div>
@@ -27,9 +27,8 @@
 <div>
   <h3>
     Eventi
-    <button class="btn btn-primary pull-right" (click)="addEvent()">
-      Aggiungi
-    </button>
+    <button class="btn btn-primary pull-right" (click)="addEvent(); getEventiGiornalieri()">Aggiungi</button>
+    <button class="btn btn-primary pull-right" (click)="salvaEvento(); refresh.next()">Salva</button>
     <div class="clearfix"></div>
   </h3>
 
@@ -37,31 +36,35 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Titolo</th>
           <th>Professore</th>
-          <th>Colore</th>
+          <th>Titolo</th>
+          <!-- <th>Colore</th> -->
           <th>Inizio</th>
           <th>Fine</th>
-          <th>Salva</th>
           <th>Rimuovi</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let event of events">
+        <tr *ngFor="let event of eventiGiornalieri">
+          <td>
+            <!-- <input type="text" class="form-control" [(ngModel)]="event.prof" (keyup)="refresh.next()" /> -->
+          <mat-select placeholder="{{event.prof}}" [(ngModel)]="event.prof" (keyup)="refresh.next()">
+            <mat-option *ngFor="let prof of listaProf" [value]="prof.cognome" (click)="assegnaMateria(prof, event)">
+              {{prof.cognome}}
+            </mat-option>
+          </mat-select>
+          </td>
           <td>
             <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()" />
           </td>
-          <td>
-            <input type="text" class="form-control" [(ngModel)]="event.prof" (keyup)="refresh.next()" />
-          </td>
-          <td>
+          <!-- <td>
           <input
             type="color"
             [(ngModel)]="event.color.primary"
             (change)="refresh.next()"
           />
-        </td>
+        </td> -->
           <td>
             <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
               (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
@@ -71,9 +74,6 @@
             <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
               (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
               dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="salvaEvento(); refresh.next()">Salva</button>
           </td>
           <td>
             <button class="btn btn-danger" (click)="deleteEvent(event); refresh.next()">Elimina</button>

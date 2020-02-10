@@ -4,6 +4,8 @@ import { ProfessoreService } from '../professore.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Professore } from '../professore';
 import { Location } from '@angular/common';
+import { Materia } from 'src/app/materia/materia';
+import { MateriaService } from 'src/app/materia/materia.service';
 
 @Component({
   selector: 'app-professore-modifica',
@@ -14,11 +16,13 @@ export class ProfessoreModificaComponent implements OnInit {
 
   professore: Professore;
   modificaProfessore: FormGroup;
+  listaMaterie: Materia[];
 
   constructor(private formBuilder: FormBuilder,
     private _professoreService: ProfessoreService,
     private _route: ActivatedRoute,
     private router: Router,
+    private _materiaService: MateriaService,
     private _location: Location) {
 
     this.modificaProfessore = this.formBuilder.group({
@@ -39,8 +43,15 @@ export class ProfessoreModificaComponent implements OnInit {
     });
   }
 
+  getMaterie(){
+    this._materiaService.getMat().subscribe((listaM: Materia[])=>{
+      this.listaMaterie = listaM;
+    });
+  }
+
   ngOnInit() {
-    this.getProfessore()
+    this.getProfessore();
+    this.getMaterie();
   }
 
   formProfessore(){

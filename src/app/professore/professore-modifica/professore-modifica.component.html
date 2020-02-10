@@ -1,5 +1,6 @@
-<h3 style="padding: 20px;">Modifica professore</h3>
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+<body style="padding: 50px;">
+<h3>Modifica professore</h3>
 <form [formGroup]="modificaProfessore" (ngSubmit)="onSubmit(modificaProfessore.value)" style="padding: 40px;">
   <div>
     <label for="nome">
@@ -47,7 +48,11 @@
       Materia
     </label>
     <mat-form-field class="input">
-    <input matInput id="materia"  type="text" formControlName="materia">
+      <mat-select formControlName="materia" placeholder="scegli materia..">
+        <mat-option *ngFor="let materia of listaMaterie" [value]="materia">
+          {{materia.titolo}}
+        </mat-option>
+      </mat-select>
   </mat-form-field>
   </div>
   <div>
@@ -60,3 +65,4 @@
   </div>
   <button mat-flat-button type="submit">Aggiorna professore</button>
 </form>
+</body>

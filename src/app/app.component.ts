@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,17 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Registro Digitale';
   opened: boolean;
+  title = 'Registro Digitale';
+  authentication : boolean = false;
+
+  constructor(private _appService: AppService){}
+
+  getAuthentication(){
+    this.authentication = this._appService.getAuth();
+    console.log(this.authentication);
+  }
+  
 }
 
 

@@ -6,29 +6,34 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import 'flatpickr/dist/flatpickr.css';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatButtonModule} from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
 import { CalendarioDettaglioComponent } from './calendario-dettaglio/calendario-dettaglio.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material';
 
 
 
 const routes: Routes = [
   { path: '', component: CalendarioComponent },
-  { path: ':id', component: CalendarioDettaglioComponent}
-  ];
+  { path: ':index', component: CalendarioDettaglioComponent },
+];
 
 @NgModule({
   imports: [
+    MatSelectModule,
     CommonModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
-    CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     MatChipsModule,
     MatButtonModule,
+    MatInputModule
   ],
   declarations: [CalendarioComponent, CalendarioDettaglioComponent]
 })

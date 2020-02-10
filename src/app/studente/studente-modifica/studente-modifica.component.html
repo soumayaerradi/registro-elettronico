@@ -1,6 +1,7 @@
-<h3>Aggiorna Studente</h3>
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
-<form [formGroup]="modificaStudente" (ngSubmit)="onSubmit(modificaStudente.value)" style="padding: 40px;">
+<body style="padding: 50px;">
+<h3>Aggiorna Studente</h3>
+<form [formGroup]="modificaStudente" (ngSubmit)="onSubmit(modificaStudente.value)">
   <div>
     <label for="nome">
       Nome
@@ -68,3 +69,4 @@
   </div>
   <button mat-flat-button type="submit">Aggiorna Studente</button>
 </form>
+</body>

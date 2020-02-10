@@ -1,7 +1,9 @@
+import { Materia } from '../materia/materia';
+
 export class Professore {
     nome: string;
     cognome: string;
-    materia: string;
+    materia: Materia;
     sesso: string;
     telefono: string;
     codiceFisc: string;

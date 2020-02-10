@@ -1,3 +1,4 @@
+  
 import { Injectable } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import { Observable, of } from 'rxjs';
@@ -17,15 +18,24 @@ export class CalendarioService {
     return this.db.list('calendario/listaEventi').valueChanges();
   }
 
-  removeEvento(index: number) {
+  getEventByIndex(index: string): Observable<any> {
+    console.log("index: " + index);
+    return this.db.object(`calendario/listaEventi/${index}`).valueChanges();
+  }
+
+  removeEvento(index: string) {
     this.db.object(`calendario/listaEventi/${index}`).remove();
   }
 
-  removeCalendario(){
+  removeCalendario() {
     this.db.list('calendario/listaEventi').remove();
   }
 
-  aggiornaCalendario(listaEventi: any){
+  aggiornaCalendario(listaEventi: any) {
     this.db.list(`calendario/`).update('listaEventi', listaEventi);
+  }
+
+  aggiornaEvento(evento: CalendarEvent, index: string){
+    this.db.object(`calendario/listaEventi/${index}`).update(evento);
   }
 }

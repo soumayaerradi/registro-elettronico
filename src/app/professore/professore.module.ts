@@ -17,6 +17,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   { path: '', component: ProfessoreListComponent },
@@ -47,7 +48,8 @@ const routes: Routes = [
     MatListModule,
     MatInputModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule
   ]
 })
 export class ProfessoreModule { }
