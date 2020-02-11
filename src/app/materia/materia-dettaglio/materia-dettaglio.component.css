@@ -1,0 +1,16 @@
+.table-materie{
+    display: table;
+  border-collapse: separate;
+  border-spacing: 30px;
+}
+
+.pallina{
+    size: 30px;
+    margin-left: 20px;
+    margin-top: 3.5px
+}
+
+.colore{
+    align-content: center;
+    display: flex;
+}

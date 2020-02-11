@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudenteService } from '../studente.service';
 import { Studente } from '../studente';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-studenti-list',
@@ -10,8 +11,10 @@ import { Router } from '@angular/router';
 })
 export class StudentiListComponent implements OnInit {
 
-  studenti: Studente[];
-  displayedColumns: string[] = ['position', 'nome', 'cognome', 'sesso', 'dataNascita', 'codiceFisc', 'azioni'];
+  studenti: Studente[] =[];
+  studentiNuovo: Studente[]=[];
+  studente : string;
+  displayedColumns: string[] = ['nome', 'cognome', 'dataNascita', 'codiceFisc', 'azioni'];
   
 
   constructor(private _serviceStudenti: StudenteService,
@@ -25,9 +28,7 @@ export class StudentiListComponent implements OnInit {
     this._serviceStudenti.getStudenti().subscribe(
       (listStudenti) => {
         this.studenti = listStudenti;
-        this.studenti.forEach((studente) => {
-          console.log(studente);
-        });
+        this.studentiNuovo = listStudenti;
       }
     );
   }
@@ -42,5 +43,14 @@ export class StudentiListComponent implements OnInit {
 
   selectStudente(selectedStudente: Studente){
     console.log(selectedStudente);
+  }
+  
+  applyFilter(studente:string) {
+    this.studentiNuovo = [];
+    for (let event of this.studenti) {
+      if (event.cognome.toLowerCase().includes(studente.toLowerCase())) {
+        this.studentiNuovo.push(event);
+      }
+    }
   }
 }

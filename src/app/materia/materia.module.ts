@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { MateriaComponent } from './materia/materia.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
+import { MateriaDettaglioComponent } from './materia-dettaglio/materia-dettaglio.component';
 
 const routes: Routes = [
   { path: '', component: MateriaComponent },
+  { path: ':titolo', component: MateriaDettaglioComponent}
 ]
 
 @NgModule({
-  declarations: [MateriaComponent],
+  declarations: [MateriaComponent, MateriaDettaglioComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -18,7 +20,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ]
 })
 export class MateriaModule { }

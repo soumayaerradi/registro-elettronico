@@ -7,7 +7,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  opened: boolean;
+  opened: boolean = false;
   title = 'Registro Digitale';
   authentication : boolean = false;
 

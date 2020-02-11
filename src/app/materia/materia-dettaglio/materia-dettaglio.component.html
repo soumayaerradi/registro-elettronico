@@ -1,0 +1,29 @@
+<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+
+<body style="padding: 50px;">
+<h2>{{materia.titolo}}</h2>
+<br>
+<h4 class="colore">Colore :<mat-icon class="pallina" [ngStyle]="{'color':materia.colore}">fiber_manual_record</mat-icon></h4>
+<br><br>
+<p>RIEPILOGO LEZIONI</p>
+<table class="table-materie">
+  <thead>
+  <th>Materia</th>
+  <th>Professore</th>
+  <th>Inizio</th>
+  <th>Fine</th>
+  <th>Note</th>
+</thead>
+<tbody>
+  <tr *ngFor="let evento of eventiMateria">
+  <td>{{evento.title}}</td>
+  <td>{{evento.prof}}</td>
+  <td>{{evento.start.toString().slice(0,21)}}</td>
+  <td>{{evento.end.toString().slice(0,21)}}</td>
+  <td><li *ngFor="let nota of evento.note">{{nota}}</li></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Totale ore occupate: {{totOre}}</h3>
+</body>

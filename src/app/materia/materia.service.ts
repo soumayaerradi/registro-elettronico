@@ -23,4 +23,9 @@ export class MateriaService {
     return this.db.list('materie').valueChanges();
   }
 
+  getMateria(nomeMat: string){
+    return this.db.object(`materie/${nomeMat}`).valueChanges();
+  }
+
+
 }

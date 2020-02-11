@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     console.log(this.username)
     if (this.username === 'admin' && this.password === 'admin') {
       this._appService.setAuth();
-      this.router.navigate(['studenti']);
+      this.router.navigate(['calendario']);
       console.log(this._appService.getAuth());
     } else {
       alert("Invalid credentials");

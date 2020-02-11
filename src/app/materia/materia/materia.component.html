@@ -34,7 +34,7 @@
       <tr *ngFor="let materia of listaMaterie">
       <td>{{materia.titolo}}</td>
       <td>{{materia.colore}}</td>
-      <td><button mat-flat-button >Dettaglio</button></td>
+      <td><button mat-flat-button routerLink="{{materia.titolo}}">Dettaglio</button></td>
       <td><button mat-flat-button (click)="deleteMateria(materia)">Elimina</button></td>
     </tr>
     </tbody>
