@@ -139,10 +139,16 @@ export class CalendarioComponent implements OnInit {
     this.events.forEach((evt, index) => {
       if (evt.id == eventToDelete.id) {
         i = index;
+        this.events.splice(i, 1);
+      }
+    });
+    this.eventiGiornalieri.forEach((evt, index) => {
+      if (evt.id == eventToDelete.id) {
+        i = index;
+        this.eventiGiornalieri.splice(i, 1);
       }
     });
     console.log("index: " + i);
-    this.events.splice(i, 1);
 
     this._calendarioService.removeCalendario();
     this._calendarioService.aggiornaCalendario(this.events);
