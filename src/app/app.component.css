@@ -9,6 +9,7 @@ img{
 .title{
     display: flex;
     align-content: center;
+    background-color: transparent !important;
 }
 
 mat-sidenav-content, mat-sidenav-container, mat-sidenav, div {

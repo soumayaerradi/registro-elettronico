@@ -8,10 +8,15 @@ pre {
   padding: 15px;
 }
 
-.btn-btn-primary, .btn-outline-secondary, mat-chip{
+.btn-btn-primary, .btn-outline-secondary{
   color: #6d23ce;
-  border: #4287F8 !important;
+}
+
+
+mat-chip{
   background-color: white !important;
+  color: white;
+  border-color: #4287F8 !important;
 }
 
 .btn-btn-primary:hover{
@@ -20,9 +25,6 @@ pre {
 
 .btn-outline-secondary:hover{
     color: red;
-}
-.btn-btn-primary:active, .btn-outline-secondary:active{
-    color: salmon;
 }
 
 .totale{

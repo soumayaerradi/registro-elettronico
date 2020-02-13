@@ -35,6 +35,7 @@ export class StudenteDettaglioComponent implements OnInit {
     this._studenteService.getStudente(codice).subscribe((std: Studente) => {
       this.studente = std;
     });
+    console.log(this.studente)
   }
 
   eliminaNota(index: number) {

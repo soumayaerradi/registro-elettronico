@@ -52,7 +52,7 @@
           </mat-select>
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-            <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()" />
+            <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()" disabled />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
             <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
