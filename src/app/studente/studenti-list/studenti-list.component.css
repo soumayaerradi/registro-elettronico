@@ -1,7 +1,76 @@
-table {
-    width: 100%;
-  }
-.button{
-    margin-left: 90%;
-  }
-  
+.mat-header-cell{
+  color: #6E18CE;
+  text-align: center;
+  font-weight: bold;
+  border-color: #4287F8;
+  empty-cells: hide;
+  justify-content: center;
+}
+.ng-container {
+  overflow: auto;
+  box-shadow: none;
+  text-align: center;
+  border: solid;
+  border-color: #4287F8;
+}
+.mat-cell{
+  color: #666666;
+}
+table{
+  height: auto;
+  width: 1000px;
+  top: 150px;
+  border-color: #4287F8;
+  text-align: center;
+  border-collapse: unset !important;
+  border-radius: 10px !important;
+  border-spacing: 20px !important;
+}
+.Id {
+  font-weight: bold;
+}
+.azioni {
+  position:left;
+}
+.box-0 {
+  display: flex;
+  border-radius: 12px;
+}
+.button {
+  border: solid #4287F8;
+  border-radius: 6px;
+  margin-left: 12px;
+  box-shadow: none;
+  background-color: white;
+  position: relative;
+  float: right;
+}
+.mat-icon {
+color: #6E18CE;
+}
+img {
+  width: 180px;
+  height: 100px;
+  margin-left: 650px;
+}
+.mat-flat-button {
+  color: #6E18CE;
+}
+mat-form-field {
+  font-size: 14px;
+  width: 990px;
+}
+mat-label{
+  color: #6E18CE;
+}
+.box {
+  border: solid #4287F8;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: white;
+  margin-left: 180px;
+  display: inline-block;
+}
+body {
+  background-color: transparent;
+} 

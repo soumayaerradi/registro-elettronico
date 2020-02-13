@@ -2,6 +2,26 @@
     margin: 30px;
 }
 
-.title{
-    text-align: center;
+img{
+    width:10%;
 }
+
+.title{
+    display: flex;
+    align-content: center;
+}
+
+mat-sidenav-content, mat-sidenav-container, mat-sidenav {
+    background-color: transparent;
+}
+
+body {
+    background-image: url(src/assets/img/logo2.png),
+                      url(src/assets/img/logodu.png);
+    background-position:  bottom -52px left -220px,
+                        bottom -5px right -120px;
+    background-repeat: no-repeat;
+    background-size: 600px, 300px;
+    max-width: auto;
+    max-height: auto;
+  }

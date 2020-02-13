@@ -26,7 +26,7 @@ import { Title } from '@angular/platform-browser';
 import { Professore } from 'src/app/professore/professore';
 import { ProfessoreService } from 'src/app/professore/professore.service';
 
-const colors: any = {
+const colors= {
   red: {
     primary: '#ad2121'
   },
@@ -135,7 +135,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
-    let i: any;
+    let i: number;
     this.events.forEach((evt, index) => {
       if (evt.id == eventToDelete.id) {
         i = index;
@@ -163,7 +163,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   salvaEvento() {
-    let updateList: any[] = [];
+    let updateList = [];
     this.events.forEach((evt) => {
       updateList.push(
         {
@@ -226,7 +226,7 @@ export class CalendarioComponent implements OnInit {
 
   assegnaMateria(prof: Professore, evento: CalendarEvent) {
     evento.title = prof.materia.titolo;
-    evento.color = { primary: prof.materia.colore, secondary: '' };
+    evento.color = { primary: prof.materia.colore};
     this.events[this.events.indexOf(evento)] = evento;
   }
 

@@ -26,3 +26,7 @@ pre {
 button{
   margin-left: 10px;
 }
+
+div, table{
+  background-color: transparent;
+}
