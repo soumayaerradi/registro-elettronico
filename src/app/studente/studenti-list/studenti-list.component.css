@@ -18,13 +18,14 @@
 }
 table{
   height: auto;
-  width: 1000px;
-  top: 150px;
+  width: auto;
+  top: auto;
   border-color: #4287F8;
   text-align: center;
   border-collapse: unset !important;
   border-radius: 10px !important;
   border-spacing: 20px !important;
+  font-family: 'Nunito', 'sans-serif';
 }
 .Id {
   font-weight: bold;
@@ -59,6 +60,7 @@ img {
 mat-form-field {
   font-size: 14px;
   width: 990px;
+  font-family: 'Nunito', 'sans-serif';
 }
 mat-label{
   color: #6E18CE;
@@ -73,4 +75,5 @@ mat-label{
 }
 body {
   background-color: transparent;
+  height: 100%;
 } 

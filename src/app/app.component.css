@@ -11,8 +11,9 @@ img{
     align-content: center;
 }
 
-mat-sidenav-content, mat-sidenav-container, mat-sidenav {
+mat-sidenav-content, mat-sidenav-container, mat-sidenav, div {
     background-color: transparent;
+    height: auto !important;
 }
 
 body {
