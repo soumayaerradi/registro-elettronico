@@ -46,7 +46,7 @@
         <tr *ngFor="let event of events">
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
           <mat-select placeholder="{{event.prof}}" [(ngModel)]="event.prof" (keyup)="refresh.next()">
-            <mat-option *ngFor="let prof of listaProf" [value]="prof.cognome" (click)="assegnaMateria(prof, event)">
+            <mat-option *ngFor="let prof of listaProf" [value]="prof.cognome" (click)="assegnaMateria(prof, event)" class="form-control">
               {{prof.cognome}}
             </mat-option>
           </mat-select>

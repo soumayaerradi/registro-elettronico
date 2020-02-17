@@ -1,32 +1,39 @@
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+
 <body style="padding: 50px;">
-<div class="detial">
-    <pre>
-        LEZIONE
-
-        Materia: {{evento.title}}
-        Professore: {{evento.prof}}
-        Inizio: {{evento.start.toString().slice(0, 21)}}
-        Fine: {{evento.end.toString().slice(0, 21)}}
-    </pre>
-</div>
-
-<div>
-    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
-        <div>
-            <label for="nota">
-                Aggiungi nota:
-            </label>
-            <mat-form-field>
-                <input matInput id="nota" type="text" formControlName="nota">
-            </mat-form-field>
-                <button mat-flat-button type="submit">SALVA</button>
+    <h3>Lezione</h3>
+    <div class="box-0">
+        <div class="box">
+            <mat-list>
+                <mat-list-item>Materia: {{evento.title}}</mat-list-item>
+                <mat-list-item>Professore: {{evento.prof}}</mat-list-item>
+                <mat-list-item>Inizio: {{evento.start.toString().slice(0, 21)}}</mat-list-item>
+                <mat-list-item>Fine: {{evento.end.toString().slice(0, 21)}}</mat-list-item>
+            </mat-list>
+            <p>Note: </p>
+            <div>
+                <ul>
+                    <li *ngFor="let nota of evento.note">
+                        - {{nota}} <button mat-flat-button (click)="removeNota(evento.note.indexOf(nota))"
+                            class="eliminanota">Elimina</button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </form>
-</div>
+    </div>
 
-<h4>Note: </h4>
-<pre *ngFor="let nota of evento.note">
-  - {{nota}} <button mat-flat-button (click)="removeNota(evento.note.indexOf(nota))">Elimina</button>
-</pre>
+    <div class="box-2">
+        <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
+            <div>
+                <label for="nota">
+                    Aggiungi nota:
+                </label>
+                <mat-form-field>
+                    <input matInput id="nota" type="text" formControlName="nota">
+                </mat-form-field>
+            </div>
+            <button mat-flat-button type="submit" class="salvanota">SALVA</button>
+        </form>
+    </div>
+
 </body>

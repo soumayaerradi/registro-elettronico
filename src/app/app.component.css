@@ -1,29 +1,35 @@
 .side-nav{
     margin: 30px;
 }
-
 img{
     width:10%;
 }
-
 .title{
     display: flex;
     align-content: center;
-    background-color: transparent !important;
 }
-
-mat-sidenav-content, mat-sidenav-container, mat-sidenav, div {
+mat-sidenav-content, mat-sidenav-container, mat-sidenav {
     background-color: transparent;
-    height: auto !important;
 }
-
+.side-nav {
+    font-family: 'Nunito', sans-serif !important;
+    color:  #6E18CE;
+}
 body {
     background-image: url(src/assets/img/logo2.png),
                       url(src/assets/img/logodu.png);
     background-position:  bottom -52px left -220px,
-                        bottom -5px right -120px;
+                          bottom -5px right -120px;
     background-repeat: no-repeat;
     background-size: 600px, 300px;
     max-width: auto;
     max-height: auto;
-  }
+    overflow-y: scroll;
+}
+mat-icon {
+    color: #4287F8;
+}
+.mat-drawer-side{
+    border-right: solid 1px #4287F8;
+    height: 75%;
+}

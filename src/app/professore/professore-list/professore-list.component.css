@@ -1,7 +1,82 @@
-table {
-    width: 100%;
-  }
-.button{
-    margin-left: 90%;
-  }
-  
+.mat-header-cell{
+  color: #6E18CE;
+  text-align: center;
+  font-weight: bold;
+  border-color: #4287F8;
+  empty-cells: hide;
+  justify-content: center;
+  font-size: 13px;
+}
+.ng-container {
+  overflow: auto;
+  box-shadow: none;
+  text-align: center;
+  border: solid;
+  border-color: #4287F8;
+}
+.mat-cell{
+  color: #666666;
+}
+table{
+  margin-top:-1%;
+  height: auto;
+  width: 100%;
+  border-color: #4287F8;
+  text-align: center;
+  border-collapse: unset !important;
+  border-radius: 10px !important;
+  border-spacing: 20px !important;
+  font-family: 'Nunito', sans-serif;
+}
+.Id {
+  font-weight: bold;
+}
+.azioni {
+  position:left;
+}
+.box-0 {
+  display: flex;
+  border-radius: 12px;
+}
+.button {
+  border: solid #4287F8;
+  border-radius: 6px;
+  margin-left: 2%;
+  box-shadow: none;
+  background-color: white;
+  position: relative;
+  float: right;
+}
+.mat-fab{
+  box-sizing: none;
+}
+.mat-icon {
+color: #6E18CE;
+}
+.mat-flat-button {
+  color: #6E18CE;
+  font-family: 'Nunito', sans-serif;
+}
+mat-form-field {
+  font-size: 14px;
+  width: 96%;
+  font-family: 'Nunito', sans-serif;
+  margin-left: 2%;
+}
+mat-label{
+  color: #6E18CE;
+}
+.box {
+  border: solid #4287F8;
+  border-radius: 15px;
+  padding: 16px;
+  background-color: white;
+  margin-left: 10%;
+  width: 80%;
+}
+body {
+  background-color: transparent;
+}
+h3 {
+  color: #6E18CE;
+}

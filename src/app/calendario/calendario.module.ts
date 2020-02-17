@@ -12,7 +12,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { CalendarioDettaglioComponent } from './calendario-dettaglio/calendario-dettaglio.component';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatListModule } from '@angular/material';
 
 
 
@@ -33,7 +33,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatChipsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule
   ],
   declarations: [CalendarioComponent, CalendarioDettaglioComponent]
 })
