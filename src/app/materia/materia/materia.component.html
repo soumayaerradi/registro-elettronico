@@ -1,43 +1,37 @@
-<body style="padding: 50px;">
-  <h2>Materie</h2>
-  <div>
-    <form [formGroup]="nuovaMateria" (ngSubmit)="onSubmit(nuovaMateria.value)">
+<body style="padding: 20px;">
+  <h3>Materie</h3>
+  <br>
+  <form [formGroup]="nuovaMateria" (ngSubmit)="onSubmit(nuovaMateria.value)">
+    <div class="box">
       <div>
-        <label for="titolo">
-          Nome Materia
-        </label>
-        <mat-form-field>
+        <label for="titolo"> Materia: </label>
+        <mat-form-field class="barra">
           <input matInput id="titolo" type="text" formControlName="titolo">
         </mat-form-field>
       </div>
       <div>
-        <label for="colore">
-          Colore Materia
-        </label>
-        <input type="color" id="colore" formControlName="colore" />
+        <label for="colore">Colore: </label>
+        <input type="color" id="colore" formControlName="colore"/>
       </div>
-      <br>
-      <button mat-flat-button type="submit">Nuova materia</button>
-    </form>
-  </div>
-  <br><br><br>
-  <div>
-    <p>MATERIE SALVATE</p>
+    </div>
+    <button mat-flat-button type="submit" class="salvamateria">Salva materia</button>
+  </form>
+<div class=box-2>
     <table class="table-materie">
       <thead>
-      <th>Materia</th>
-      <th>Colore</th>
-      <th>Dettaglio</th>
-      <th>Elimina</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let materia of listaMaterie">
-      <td>{{materia.titolo}}</td>
-      <td>{{materia.colore}}</td>
-      <td><button mat-flat-button routerLink="{{materia.titolo}}">Dettaglio</button></td>
-      <td><button mat-flat-button (click)="deleteMateria(materia)">Elimina</button></td>
-    </tr>
-    </tbody>
+        <th>Materia</th>
+        <th>Colore</th>
+        <th>Dettaglio</th>
+        <th>Elimina</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materia of listaMaterie">
+          <td>{{materia.titolo}}</td>
+          <td>{{materia.colore}}</td>
+          <td><button mat-flat-button routerLink="{{materia.titolo}}" class="modifiche">Dettaglio</button></td>
+          <td><button mat-flat-button (click)="deleteMateria(materia)" class="modifiche">Elimina</button></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </body>

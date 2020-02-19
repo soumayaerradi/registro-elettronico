@@ -3,10 +3,12 @@
 }
 img{
     width:10%;
+    margin-top: -1%;
 }
 .title{
-    display: inline;
+    display: flex;
     align-content: center;
+    background-color: transparent;
 }
 mat-sidenav-content, mat-sidenav-container, mat-sidenav {
     background-color: transparent;
@@ -14,6 +16,10 @@ mat-sidenav-content, mat-sidenav-container, mat-sidenav {
 .side-nav {
     font-family: 'Nunito', sans-serif !important;
     color:  #6E18CE;
+    margin-bottom: 10%;
+}
+#studenti{
+    margin-top: 35%;
 }
 body {
     background-image: url(src/assets/img/logo2.png),
@@ -31,5 +37,24 @@ mat-icon {
 }
 .mat-drawer-side{
     border-right: solid 1px #4287F8;
-    height: 75%;
+    height: auto;
+}
+.menù {
+    display: flex;
+}
+.mat-button-focus-overlay{
+transition: none !important;
+}
+.mat-drawer-side{
+    width: 13%;
+}
+.imgnav{
+    width: 38%;
+    margin-left: 25%;
+}
+button:focus{
+outline: none;
+}
+button:active{
+    background-color: none !important;
 }

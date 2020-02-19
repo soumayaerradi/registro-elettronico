@@ -4,7 +4,9 @@
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
       <mat-nav-list>
-        <button mat-button routerLink="studenti" class="side-nav">Studenti</button>
+        <img src="assets/img/logo.png" class="imgnav">
+       <br>
+        <button mat-button routerLink="studenti" id="studenti" class="side-nav">Studenti</button>
         <br>
         <button mat-button routerLink="professori" class="side-nav">Professori</button>
         <br>
@@ -14,15 +16,22 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
+      <div class="menù">
       <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
+         <mat-icon>menu</mat-icon> 
       </button>
       <button mat-flat-button routerLink="calendario" class="title"><img src="assets/img/digitalregister.png"></button>
+    </div>
       <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
 </body>
 <ng-template #login>
   <app-login (click)="getAuthentication()"></app-login>
 </ng-template>
+
+
+
+
+

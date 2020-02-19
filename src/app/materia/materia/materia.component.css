@@ -1,5 +1,91 @@
 .table-materie{
-    display: table;
+  display: table;
   border-collapse: separate;
   border-spacing: 30px;
+  color: #666666;
+  margin-left: 8.5%;
+}
+h3 {
+  color: #6E18CE;
+}
+body {
+   background-color: transparent;
+}
+.box {
+   border: solid #4287F8;
+   border-radius: 12px;
+   height: auto;
+   width: 40%;
+   margin-left: 32%;
+   display: inline-block;
+  }
+ .nota {
+  color: #6E18CE;
+  margin-left: 500px;
+  margin-top: 15px;
+  }
+p{
+  color: #4287F8;
+  font-size: 16px;
+  margin-left: 11%;
+  margin-top: 5%;
+  margin-bottom: -2%;
+}
+mat-form-field {
+ width: 70%;
+ color: #6E18CE !important;
+}
+label {
+  margin-left: 10%;
+  margin-right: 2%;
+  color: #4287F8;
+}
+.box-2 {
+  display: flex;
+  border: 1.5px solid #4287F8;
+  border-radius: 12px;
+  width: 40%;
+  margin-top: 8%;
+  margin-left: 32%;
+ }
+.salvamateria {
+  margin-top: 1%;
+  margin-right: 28%;
+  border: 1.5px solid #4287F8;
+  border-radius: 6px;
+  box-shadow: none;
+  background-color: white;
+  position: relative;
+  float: right;
+  color: #6E18CE;
+  font-family: "Nunito", "sans-serfif";
+}
+.modifiche {
+  background-color: white;
+  color: #6E18CE;
+  font-family: "Nunito", "sans-serfif";
+  margin-top: 5%;
+}
+.material-icons {
+  color: #4287F8;
+}
+thead{
+  color: #6E18CE;
+}
+.barra {
+width: 60%;
+}
+#colore{
+  margin-top: 1%;
+  margin-bottom: 3%;
+ border: 1px solid #4287F8;
+  border-radius: 6px;
+  box-shadow: none;
+  background-color: white;
+  position: relative;
+  width: 10%;
+}
+#azioni {
+  margin-left: 50%;
+  margin-bottom: -4%;
 }
