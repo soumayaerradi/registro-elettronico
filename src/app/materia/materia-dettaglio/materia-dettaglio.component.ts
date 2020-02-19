@@ -18,7 +18,18 @@ export class MateriaDettaglioComponent implements OnInit {
     colore: ""
   };
   totOre: number = 0;
-  eventiMateria: CalendarEvent[] = [];
+  eventiMateria: CalendarEvent[] = [{
+    color: { primary: "#00f900" },
+    draggable: true,
+    end: new Date(),
+    id: 3,
+    note: ["che palle sono stanca voglio andare a casa a dormi…aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+    prof: "Gentile",
+    resizable: { afterEnd: true, beforeStart: true },
+    start: new Date(),
+    title: "Coding ",
+  }];
+  displayedColumns: string[] = ['materia', 'professore', 'inizio', 'fine', 'note'];
 
   constructor(private _route: ActivatedRoute,
     private _materiaService: MateriaService,
@@ -29,26 +40,29 @@ export class MateriaDettaglioComponent implements OnInit {
     this.getMateria();
   }
 
-  getMateria(){
+  getMateria() {
     const nomeMateria: string = this._route.snapshot.paramMap.get('titolo');
     this._materiaService.getMateria(nomeMateria).subscribe((materia: Materia) => {
       this.materia = materia;
       this.getEventi();
     })
+    console.log("ciao");
+
   }
 
-  getEventi(){
+  getEventi() {
     this._calendarioService.getEvents().subscribe((event) => {
       event.forEach((elm) => {
-        if(elm.title == this.materia.titolo){
+        if (elm.title == this.materia.titolo) {
           this.eventiMateria.push(elm);
           this.calcolaOre(elm.start, elm.end);
+          console.log(this.eventiMateria)
         }
       })
     })
   }
 
-  calcolaOre(start, end){
+  calcolaOre(start, end) {
     let inizio = new Date(start);
     let fine = new Date(end);
 

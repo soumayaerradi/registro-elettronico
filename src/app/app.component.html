@@ -1,7 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 <body class="background">
 <div class="example-container" style="padding: 20px" *ngIf="authentication; else login">
-  <button mat-flat-button routerLink="calendario" class="title"><img src="assets/img/digitalregister.png"></button>
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
       <mat-nav-list>
@@ -18,6 +17,7 @@
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
+      <button mat-flat-button routerLink="calendario" class="title"><img src="assets/img/digitalregister.png"></button>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

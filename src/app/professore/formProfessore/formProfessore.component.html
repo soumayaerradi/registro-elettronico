@@ -1,6 +1,4 @@
-<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
-
-<body style="padding: 50px;">
+<body style="padding: 20px;">
   <h3>Crea un nuovo professore</h3>
   <form [formGroup]="nuovoProfessore" (ngSubmit)="onSubmit(nuovoProfessore.value)" style="padding: 40px;">
     <div>
@@ -64,6 +62,6 @@
         <input matInput id="telefono" type="text" formControlName="telefono">
       </mat-form-field>
     </div>
-    <button mat-flat-button type="submit" class="nuovo">Crea Nuovo Professore</button>
+    <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()">Crea Nuovo Professore</button>
   </form>
 </body>

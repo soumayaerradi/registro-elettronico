@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
 import { MateriaDettaglioComponent } from './materia-dettaglio/materia-dettaglio.component';
+import {MatTableModule} from '@angular/material/table';
 
 const routes: Routes = [
   { path: '', component: MateriaComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ]
 })
 export class MateriaModule { }

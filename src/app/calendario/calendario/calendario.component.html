@@ -45,23 +45,25 @@
       <tbody>
         <tr *ngFor="let event of events">
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-          <mat-select placeholder="{{event.prof}}" [(ngModel)]="event.prof" (keyup)="refresh.next()">
-            <mat-option *ngFor="let prof of listaProf" [value]="prof.cognome" (click)="assegnaMateria(prof, event)" class="form-control">
-              {{prof.cognome}}
-            </mat-option>
-          </mat-select>
+            <mat-select placeholder="{{event.prof}}" [(ngModel)]="event.prof" (keyup)="refresh.next()">
+              <mat-option *ngFor="let prof of listaProf" [value]="prof.cognome" (click)="assegnaMateria(prof, event)"
+                class="form-control">
+                {{prof.cognome}}
+              </mat-option>
+            </mat-select>
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-            <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()" disabled />
+            <input matInput type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()"
+              disabled />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
+            <input matInput class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
               (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
               dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-            <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
-              (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
+            <input matInput class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
+              (ngModelChange)="refresh.next(); dateController(event)" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
               dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">

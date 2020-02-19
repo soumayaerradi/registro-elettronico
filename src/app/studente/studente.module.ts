@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule, MatFormFieldModule, MatListModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [
   { path: '', component: StudentiListComponent },
@@ -42,7 +43,8 @@ const routes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ]
 })
 export class StudenteModule { }

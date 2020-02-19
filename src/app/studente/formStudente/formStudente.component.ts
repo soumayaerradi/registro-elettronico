@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { StudenteService } from '../studente.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-formStudente',
@@ -17,7 +18,8 @@ export class FormStudenteComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
     private _studentiService: StudenteService,
     private _router: Router,
-    private _location: Location) { }
+    private _location: Location,
+    public dialogRef: MatDialogRef<FormStudenteComponent>) { }
 
   onSubmit(nuovoStudente: Studente) {
     this._studentiService.aggiornaStudente(nuovoStudente);
@@ -38,6 +40,10 @@ export class FormStudenteComponent implements OnInit {
 
   goBack() {
     this._location.back();
+  }
+
+  closeOpenDialog(){
+    this.dialogRef.close();
   }
 
   get nome(): AbstractControl {

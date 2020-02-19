@@ -39,19 +39,19 @@ table{
   border-radius: 12px;
 }
 .button {
-  border: solid #4287F8;
-  border-radius: 6px;
-  margin-left: 2%;
-  box-shadow: none;
-  background-color: white;
-  position: relative;
-  float: right;
+  margin-left: 82%;
+  margin-right: 15%;
+  box-shadow: gray;
+  background-color: #6E18CE;
+  position: fixed;
+  bottom: 12%;
+  overflow: hidden;
 }
 .mat-fab{
   box-sizing: none;
 }
 .mat-icon {
-color: #6E18CE;
+  color: white;
 }
 .mat-flat-button {
   color: #6E18CE;

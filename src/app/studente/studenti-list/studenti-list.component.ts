@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { StudenteService } from '../studente.service';
 import { Studente } from '../studente';
 import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
+import {Inject} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { FormStudenteComponent } from '../formStudente/formStudente.component';
 
 @Component({
   selector: 'app-studenti-list',
@@ -18,7 +20,8 @@ export class StudentiListComponent implements OnInit {
   
 
   constructor(private _serviceStudenti: StudenteService,
-    private router: Router) { }
+              private router: Router,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.visualizzaListaStudente();
@@ -53,4 +56,15 @@ export class StudentiListComponent implements OnInit {
       }
     }
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(FormStudenteComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }

@@ -21,7 +21,8 @@ import { Router } from '@angular/router';
 import { CalendarioService } from '../calendario.service';
 import { Professore } from 'src/app/professore/professore';
 import { ProfessoreService } from 'src/app/professore/professore.service';
-const colors= {
+import {MatSnackBar} from '@angular/material/snack-bar';
+const colors = {
   red: {
     primary: '#ad2121'
   },
@@ -53,7 +54,8 @@ export class CalendarioComponent implements OnInit {
   constructor(
     private router: Router,
     private _calendarioService: CalendarioService,
-    private _professoreService: ProfessoreService) { }
+    private _professoreService: ProfessoreService,
+    private _snackBar: MatSnackBar) { }
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -151,9 +153,18 @@ export class CalendarioComponent implements OnInit {
   }
   assegnaMateria(prof: Professore, evento: CalendarEvent) {
     evento.title = prof.materia.titolo;
-    evento.color = {primary: prof.materia.colore};
+    evento.color = { primary: prof.materia.colore };
     this.events[this.events.indexOf(evento)] = evento;
   }
+
+  dateController(event) {
+    if (event.end < event.start) {
+      event.end = event.start;
+      let snackBarRef = this._snackBar.open("LA DATA DI FINE NON PUO' PRECEDERE QUELLA DI INIZIO!");
+    }
+    console.log("bu"+event.end)
+  }
+
   ngOnInit() {
     this.getEventi();
     this.getProfessori();

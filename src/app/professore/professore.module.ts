@@ -11,7 +11,7 @@ import { ProfessoreDettaglioComponent } from './professore-dettaglio/professore-
 import { ProfessoreModificaComponent } from './professore-modifica/professore-modifica.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material';
+import {MatIconModule, MatDialogModule, MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
@@ -49,7 +49,9 @@ const routes: Routes = [
     MatInputModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatFormFieldModule
   ]
 })
 export class ProfessoreModule { }

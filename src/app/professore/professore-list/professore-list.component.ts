@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessoreService } from '../professore.service';
 import { Router } from '@angular/router';
 import { Professore } from '../professore';
+import {MatDialog} from '@angular/material/dialog';
+import { FormProfessoreComponent } from '../formProfessore/formProfessore.component';
 
 @Component({
   selector: 'app-professore-list',
@@ -16,7 +18,8 @@ export class ProfessoreListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'nome', 'cognome', 'materia', 'azioni'];
 
   constructor(private _professoriService: ProfessoreService,
-    private router: Router) { }
+    private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.visualizzaListaProfessori()
@@ -46,5 +49,15 @@ export class ProfessoreListComponent implements OnInit {
         this.professoriNuovo.push(event);
       }
     }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(FormProfessoreComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

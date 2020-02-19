@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { Professore } from '../professore';
 import { Location } from '@angular/common';
 import { MateriaService } from 'src/app/materia/materia.service';
-import { CalendarEvent } from 'angular-calendar';
 import { Materia } from 'src/app/materia/materia';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-formProfessore',
@@ -22,7 +22,8 @@ export class FormProfessoreComponent implements OnInit {
     private _professoreService: ProfessoreService,
     private router: Router,
     private _location: Location,
-    private _materiaService: MateriaService) {
+    private _materiaService: MateriaService,
+    public dialogRef: MatDialogRef<FormProfessoreComponent>) {
 
     this.nuovoProfessore = this.formBuilder.group({
       nome: ['', Validators.required],
@@ -51,6 +52,10 @@ export class FormProfessoreComponent implements OnInit {
 
   goBack() {
     this._location.back();
+  }
+
+  closeOpenDialog(){
+    this.dialogRef.close();
   }
 
   get nome(): AbstractControl {
