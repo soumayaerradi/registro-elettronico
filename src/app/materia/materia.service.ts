@@ -23,6 +23,10 @@ export class MateriaService {
     return this.db.list('materie').valueChanges();
   }
 
+  getMaterie() {
+    return this.db.object('materie').valueChanges();
+  }
+
   getMateria(nomeMat: string){
     return this.db.object(`materie/${nomeMat}`).valueChanges();
   }

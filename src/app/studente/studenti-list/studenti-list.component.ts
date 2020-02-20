@@ -59,7 +59,7 @@ export class StudentiListComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FormStudenteComponent, {
-      width: '500px',
+      width: '60%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

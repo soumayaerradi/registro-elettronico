@@ -23,12 +23,24 @@ export class StudenteService {
     return this.db.object(`studenti/${codiceFisc}`).valueChanges();
   }
 
-  removeStudente(codiceStudente: string){
+  removeStudente(codiceStudente: string) {
     this.db.object(`/studenti/${codiceStudente}`).remove();
   }
 
-  aggiornaStudente(std: Studente){
-    this.db.list(`studenti/`).update(std.codiceFisc ,std);
+  aggiornaStudente(std: Studente) {
+    this.db.list(`studenti/`).update(std.codiceFisc, std);
+  }
+
+  aggiornaStoriciAPR(listaStudenti: Studente[], idEvento: number) {
+    listaStudenti.forEach((std: Studente)=>{
+      this.db.object(`studenti/${std.codiceFisc}/storicoAPR/${idEvento}`).update(std.storicoAPR[idEvento]);
+    });
+  }
+
+  removeStoricoAPR(listaStudenti: Studente[], idEvento: number){
+    listaStudenti.forEach((std: Studente) => {
+      this.db.object(`studenti/${std.codiceFisc}/storicoAPR/${idEvento}`).remove()
+    })
   }
 
 }

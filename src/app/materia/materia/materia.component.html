@@ -14,7 +14,7 @@
         <input type="color" id="colore" formControlName="colore"/>
       </div>
     </div>
-    <button mat-flat-button type="submit" class="salvamateria">Salva materia</button>
+    <button mat-flat-button type="submit" class="salvamateria">Aggiungi nuova materia</button>
   </form>
 <div class=box-2>
     <table class="table-materie">
@@ -27,7 +27,8 @@
       <tbody>
         <tr *ngFor="let materia of listaMaterie">
           <td>{{materia.titolo}}</td>
-          <td>{{materia.colore}}</td>
+          <td><mat-icon class="pallina" [ngStyle]="{'color':materia.colore}">fiber_manual_record
+          </mat-icon></td>
           <td><button mat-flat-button routerLink="{{materia.titolo}}" class="modifiche">Dettaglio</button></td>
           <td><button mat-flat-button (click)="deleteMateria(materia)" class="modifiche">Elimina</button></td>
         </tr>

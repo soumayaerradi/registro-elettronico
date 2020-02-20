@@ -8,8 +8,8 @@ h3 {
      border: solid #4287F8;
      border-radius: 12px;
      height: auto;
-     width: 40%;
-     margin-left: 32%;
+     width: 70%;
+     margin-left: 15%;
      display: inline-block;
     }
    .nota {
@@ -26,9 +26,9 @@ h3 {
   p{
     color: #4287F8;
     font-size: 16px;
-    margin-left: 11%;
+    margin-left: 8%;
     margin-top: 5%;
-    margin-bottom: -2%;
+    margin-bottom: 1%;
   } 
   li {
     font-family: "Nunito", "sans-serfif";
@@ -48,11 +48,37 @@ h3 {
   .box-2 {
     border: 1.5px solid #4287F8;
     border-radius: 12px;
-    width: 40%;
-    margin-left: 32%;
+    width: 70%;
+    margin-left: 15%;
     margin-top: 3.5%;
   }
-  .salvanota {
+
+  .box-3 {
+    border: solid #4287F8;
+     border-radius: 12px;
+     height: auto;
+     width: 70%;
+     margin-left: 15%;
+    margin-top: 1%;
+  }
+
+  table{
+    font-family: "Nunito", "sans-serfif";
+    color: #666666 !important;
+    display: table;
+    border-collapse: separate;
+    margin-left: 4%;
+    margin-top: 5%;
+    width: 100%;
+  }
+
+  h4{
+    margin-left: 10%;
+    margin-top: 5%;
+    color: #6E18CE;
+  }
+
+  .salvanota, .salvaPresenze {
     margin-top: 2%;
     border: 1.5px solid #4287F8;
     border-radius: 6px;
@@ -69,4 +95,8 @@ h3 {
     color: #6E18CE;
     font-family: "Nunito", "sans-serfif";
     margin-top: 5%;
+  }
+
+  .material-icons{
+    color: #4287F8;
   }

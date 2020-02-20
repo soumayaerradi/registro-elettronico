@@ -1,16 +1,94 @@
-.table-materie{
-    display: table;
-  border-collapse: separate;
-  border-spacing: 30px;
+table{
+    margin-top:1%;
+    height: auto;
+    width: 100%;
+    border-color: #4287F8;
+    text-align: center;
+    border-collapse: unset !important;
+    border-radius: 10px !important;
+    border-spacing: 20px !important;
+    font-family: 'Nunito', sans-serif;
+  }
+.box {
+  margin-top: 7%;
+    border: solid #4287F8;
+    border-radius: 12px;
+    height: auto;
+    width: 70%;
+    margin-left: 15%;
+    display: flex;
 }
-
+p{
+    color: #4287F8;
+    font-size: 16px;
+    margin-left: 11%;
+    flex: 1;
+    font-size: 18px;
+    margin-top: 3.5%;
+}
 .pallina{
-    size: 30px;
-    margin-left: 20px;
-    margin-top: 3.5px
+    size: 30%;
 }
-
 .colore{
     align-content: center;
     display: flex;
 }
+h3 {
+    color: #4287F8;
+    margin-left: 8%;
+    flex:1;
+    margin-top: 2.5%;
+}
+  body {
+     background-color: transparent;
+  }
+.nota {
+    color: #6E18CE;
+    margin-left: 60%;
+    margin-top: 5%;
+}
+mat-list-item {
+      font-family: "Nunito", "sans-serfif";
+      color: #666666 !important;
+      margin-left: 8%;
+      margin-top: 2%;
+  }
+  li {
+    font-family: "Nunito", "sans-serfif";
+    color: #666666 !important;
+    margin-top: -3%;
+    margin-left: 7%;
+  }
+  thead{
+    color: #6E18CE;
+  }
+  label {
+    margin-left: 10%;
+    margin-right: 2%;
+    color: #4287F8;
+  }
+  .box-2 {
+    border: 1.5px solid #4287F8;
+    border-radius: 12px;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 3.5%;
+  }
+  .material-icons {
+    color: #4287F8;
+  }
+  .box-3{
+    border: 1.5px solid #4287F8;
+    border-radius: 12px;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 3.5%;
+    text-align: center;
+  }
+  h5 {
+    color: #4287F8;
+    padding: 1%;
+  } 
+  .material-icons{
+    color: #4287F8;
+  }

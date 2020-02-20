@@ -1,37 +1,46 @@
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
-<body style="padding: 20px;" >
+
+<body style="padding: 20px;">
   <h3>Studente</h3>
   <button mat-button routerLink="../../modifica/{{studente.codiceFisc}}" class="modifica">Modifica</button>
   <div class="box-0">
     <div class="box">
-  <mat-list>
-    <mat-list-item>Nome:  {{studente.nome}}</mat-list-item>
-    <mat-list-item>Cognome:  {{studente.cognome}}</mat-list-item>
-    <mat-list-item>Data di nascita:  {{studente.dataNascita}}</mat-list-item>
-    <mat-list-item>Codice fiscale:  {{studente.codiceFisc}}</mat-list-item>
-    <mat-list-item>Percorso di studi:  {{studente.percorsoStudi}}</mat-list-item>
-    <mat-list-item>Telefono:  {{studente.telefono}}</mat-list-item>
-    <mat-list-item>Città di residenza:  {{studente.citta}}</mat-list-item>
-  </mat-list>
-  <p>Note:</p>
-  <div>
-    <ul>
-      <li *ngFor="let n of studente.note">
-        {{n}}   <button mat-button (click)="eliminaNota(studente.note.indexOf(n))" class="eliminanota">Elimina</button>
-      </li>
-    </ul>
+      <mat-list>
+        <mat-list-item>Nome: {{studente.nome}}</mat-list-item>
+        <mat-list-item>Cognome: {{studente.cognome}}</mat-list-item>
+        <mat-list-item>Data di nascita: {{studente.dataNascita}}</mat-list-item>
+        <mat-list-item>Codice fiscale: {{studente.codiceFisc}}</mat-list-item>
+        <mat-list-item>Percorso di studi: {{studente.percorsoStudi}}</mat-list-item>
+        <mat-list-item>Telefono: {{studente.telefono}}</mat-list-item>
+        <mat-list-item>Città di residenza: {{studente.citta}}</mat-list-item>
+      </mat-list>
+      <p>Ore Assenza</p>
+      <mat-list>
+        <mat-list-item *ngFor="let item of materie | keyvalue">
+          {{item.key}} : {{item.value}}
+        </mat-list-item>
+      </mat-list>
+      <p>Ore Assenza Totali : {{oreTotali}}</p>
+      <p>Note:</p>
+      <div>
+        <ul>
+          <li *ngFor="let n of studente.note">
+            {{n}} <button mat-button (click)="eliminaNota(studente.note.indexOf(n))"
+              class="eliminanota">Elimina</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
+      <div>
+        <div class="box-2">
+          <label for="nota"> Nota:</label>
+          <mat-form-field>
+            <input matInput id="nota" type="text" formControlName="nota">
+          </mat-form-field>
+        </div>
+        <button mat-flat-button type="submit" class="salvanota">Salva nota</button>
+      </div>
+    </form>
   </div>
-</div>
-<form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
-<div>
-<div class="box-2">
-    <label for="nota"> Nota:</label>
-    <mat-form-field>
-    <input matInput id="nota" type="text" formControlName="nota">
-  </mat-form-field>
-  </div>
-  <button mat-flat-button type="submit" class="salvanota">Salva nota</button>
-</div>
-</form>
-</div>
 </body>

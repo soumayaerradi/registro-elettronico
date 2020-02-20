@@ -157,12 +157,11 @@ export class CalendarioComponent implements OnInit {
     this.events[this.events.indexOf(evento)] = evento;
   }
 
-  dateController(event) {
+  dateController(event, action) {
     if (event.end < event.start) {
       event.end = event.start;
-      let snackBarRef = this._snackBar.open("LA DATA DI FINE NON PUO' PRECEDERE QUELLA DI INIZIO!");
+      this._snackBar.open("LA DATA DI FINE NON PUO' PRECEDERE QUELLA DI INIZIO!",action, {duration:4000});
     }
-    console.log("bu"+event.end)
   }
 
   ngOnInit() {

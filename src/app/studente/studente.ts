@@ -6,6 +6,6 @@ export class Studente {
   codiceFisc: string;
   note: string[] = [];
   percorsoStudi: string;
-  storicoLezioni: {} = {};
+  storicoAPR: {};
   telefono: number;
 }

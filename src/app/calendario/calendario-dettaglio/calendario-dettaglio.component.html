@@ -35,5 +35,46 @@
             <button mat-flat-button type="submit" class="salvanota">SALVA</button>
         </form>
     </div>
-
+    <h4>Presenze</h4>
+    <div class="box-3">
+        <table>
+            <tr>
+                <th>Codice Fiscale</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>APR</th>
+            </tr>
+            <tr *ngFor="let std of listaStudenti">
+                <td>{{std.codiceFisc}}</td>
+                <td>{{std.nome}}</td>
+                <td>{{std.cognome}}</td>
+                <td>
+                    <mat-form-field *ngIf="control; else secondMatFormField">
+                        <mat-select placeholder="{{std.storicoAPR[evento.id].presenza}}">
+                            <mat-option *ngFor="let str of valueString" [value]="str" (click)="selezioneAPR(std, str)">
+                                {{str}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <ng-template #secondMatFormField>
+                        <mat-form-field>
+                            <mat-select placeholder="{{valueString[0]}}">
+                                <mat-option *ngFor="let str of valueString" [value]="str"
+                                    (click)="selezioneAPR(std, str)">
+                                    {{str}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </ng-template>
+                </td>
+                <td *ngIf="controlloRitardo(std)">
+                    <input class="form-control" type="text" mwlFlatpickr
+                        [(ngModel)]="std.storicoAPR[evento.id].oraEntrata" (ngModelChange)="calcolaOreRitardo(std)"
+                        [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i"
+                        altFormat="F j, Y H:i" placeholder="Not set" />
+                </td>
+            </tr>
+        </table>
+        <button mat-flat-button (click)="salvaSuDB()" class="salvaPresenze">SALVA</button>
+    </div>
 </body>

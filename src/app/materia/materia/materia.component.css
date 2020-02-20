@@ -4,6 +4,7 @@
   border-spacing: 30px;
   color: #666666;
   margin-left: 8.5%;
+  width: 100%;
 }
 h3 {
   color: #6E18CE;
@@ -15,8 +16,8 @@ body {
    border: solid #4287F8;
    border-radius: 12px;
    height: auto;
-   width: 40%;
-   margin-left: 32%;
+   width: 60%;
+   margin-left: 20%;
    display: inline-block;
   }
  .nota {
@@ -36,7 +37,7 @@ mat-form-field {
  color: #6E18CE !important;
 }
 label {
-  margin-left: 10%;
+  margin-left: 15%;
   margin-right: 2%;
   color: #4287F8;
 }
@@ -44,13 +45,13 @@ label {
   display: flex;
   border: 1.5px solid #4287F8;
   border-radius: 12px;
-  width: 40%;
+  width: 60%;
   margin-top: 8%;
-  margin-left: 32%;
+  margin-left: 20%;
  }
 .salvamateria {
   margin-top: 1%;
-  margin-right: 28%;
+  margin-right: 20%;
   border: 1.5px solid #4287F8;
   border-radius: 6px;
   box-shadow: none;
@@ -88,4 +89,8 @@ width: 60%;
 #azioni {
   margin-left: 50%;
   margin-bottom: -4%;
+}
+
+.pallina{
+  size: 30%;
 }

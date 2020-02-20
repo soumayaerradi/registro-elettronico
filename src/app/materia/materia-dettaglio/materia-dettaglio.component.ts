@@ -18,17 +18,7 @@ export class MateriaDettaglioComponent implements OnInit {
     colore: ""
   };
   totOre: number = 0;
-  eventiMateria: CalendarEvent[] = [{
-    color: { primary: "#00f900" },
-    draggable: true,
-    end: new Date(),
-    id: 3,
-    note: ["che palle sono stanca voglio andare a casa a dormi…aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
-    prof: "Gentile",
-    resizable: { afterEnd: true, beforeStart: true },
-    start: new Date(),
-    title: "Coding ",
-  }];
+  eventiMateria: CalendarEvent[] = [];
   displayedColumns: string[] = ['materia', 'professore', 'inizio', 'fine', 'note'];
 
   constructor(private _route: ActivatedRoute,

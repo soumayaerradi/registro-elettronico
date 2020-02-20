@@ -1,13 +1,13 @@
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+<body style="padding: 20px;">
+  <div class="box">
+    <h3>Materia: {{materia.titolo | uppercase}}</h3>
+    <p class="colore">Colore: <mat-icon class="pallina" [ngStyle]="{'color':materia.colore}">fiber_manual_record
+      </mat-icon>
+    </p>
+  </div>
 
-<body style="padding: 50px;">
-<h2>{{materia.titolo}}</h2>
-<br>
-<h4 class="colore">Colore :<mat-icon class="pallina" [ngStyle]="{'color':materia.colore}">fiber_manual_record</mat-icon></h4>
-<br><br>
-<p>RIEPILOGO LEZIONI</p>
-
-<table class="table-materie">
+<table class="box-2">
   <thead>
   <th>Materia</th>
   <th>Professore</th>
@@ -25,7 +25,6 @@
 </tr>
 </tbody>
 </table>
-
 <!-- <table mat-table [dataSource]="eventiMateria">
   <ng-container matColumnDef="materia">
     <th mat-header-cell *matHeaderCellDef> Materia </th>
@@ -52,6 +51,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table> -->
-
-<h3>Totale ore occupate: {{totOre}}</h3>
+<div class="box-3">
+  <h5>Totale ore occupate: {{totOre}}</h5>
+</div>
 </body>

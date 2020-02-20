@@ -39,8 +39,8 @@ table{
   border-radius: 12px;
 }
 .button {
-  margin-left: 82%;
-  margin-right: 15%;
+  margin-left: 80%;
+  margin-right: 15% !important;
   box-shadow: gray;
   background-color: #6E18CE;
   position: fixed;

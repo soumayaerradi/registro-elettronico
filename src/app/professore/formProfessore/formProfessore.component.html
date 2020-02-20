@@ -1,6 +1,7 @@
-<body style="padding: 20px;">
+<body>
   <h3>Crea un nuovo professore</h3>
-  <form [formGroup]="nuovoProfessore" (ngSubmit)="onSubmit(nuovoProfessore.value)" style="padding: 40px;">
+  <form [formGroup]="nuovoProfessore" (ngSubmit)="onSubmit(nuovoProfessore.value)">
+    <div class="box">
     <div>
       <label for="nome">
         Nome
@@ -62,6 +63,7 @@
         <input matInput id="telefono" type="text" formControlName="telefono">
       </mat-form-field>
     </div>
+  </div>
     <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()">Crea Nuovo Professore</button>
   </form>
 </body>
