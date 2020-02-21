@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MateriaService } from '../materia.service';
 import { Materia } from '../materia';
 import { CalendarioService } from 'src/app/calendario/calendario.service';
@@ -21,7 +21,8 @@ export class MateriaDettaglioComponent implements OnInit {
   eventiMateria: CalendarEvent[] = [];
   displayedColumns: string[] = ['materia', 'professore', 'inizio', 'fine', 'note'];
 
-  constructor(private _route: ActivatedRoute,
+  constructor(private router: Router,
+    private _route: ActivatedRoute,
     private _materiaService: MateriaService,
     private _calendarioService: CalendarioService,
     private _location: Location) { }
@@ -36,7 +37,6 @@ export class MateriaDettaglioComponent implements OnInit {
       this.materia = materia;
       this.getEventi();
     })
-    console.log("ciao");
 
   }
 
@@ -46,7 +46,6 @@ export class MateriaDettaglioComponent implements OnInit {
         if (elm.title == this.materia.titolo) {
           this.eventiMateria.push(elm);
           this.calcolaOre(elm.start, elm.end);
-          console.log(this.eventiMateria)
         }
       })
     })
@@ -65,5 +64,9 @@ export class MateriaDettaglioComponent implements OnInit {
 
   goBack() {
     this._location.back();
+  }
+
+  routerlink(event: CalendarEvent){
+    this.router.navigate([`calendario/${event.id}`]);
   }
 }

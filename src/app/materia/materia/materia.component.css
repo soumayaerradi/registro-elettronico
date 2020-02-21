@@ -63,12 +63,15 @@ label {
 }
 .modifiche {
   background-color: white;
-  color: #6E18CE;
+  color: #4287F8;
   font-family: "Nunito", "sans-serfif";
   margin-top: 5%;
 }
-.material-icons {
-  color: #4287F8;
+.elimina{
+  background-color: white;
+  color: red;
+  font-family: "Nunito", "sans-serfif";
+  margin-top: 5%;
 }
 thead{
   color: #6E18CE;
@@ -94,3 +97,4 @@ width: 60%;
 .pallina{
   size: 30%;
 }
+

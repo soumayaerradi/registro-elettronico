@@ -15,7 +15,7 @@ export class ProfessoreListComponent implements OnInit {
   professori: Professore[];
   professoriNuovo: Professore[];
   prof:string;
-  displayedColumns: string[] = ['position', 'nome', 'cognome', 'materia', 'azioni'];
+  displayedColumns: string[] = ['cognome', 'nome', 'materia', 'azioni'];
 
   constructor(private _professoriService: ProfessoreService,
     private router: Router,

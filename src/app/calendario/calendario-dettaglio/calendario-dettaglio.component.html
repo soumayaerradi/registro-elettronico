@@ -1,4 +1,4 @@
-<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
+<button mat-button (click)="goBack()" class="back"><i class="material-icons">arrow_back_ios</i></button>
 
 <body style="padding: 50px;">
     <h3>Lezione</h3>
@@ -32,7 +32,7 @@
                     <input matInput id="nota" type="text" formControlName="nota">
                 </mat-form-field>
             </div>
-            <button mat-flat-button type="submit" class="salvanota">SALVA</button>
+            <button mat-flat-button type="submit" class="salvanota"><i class="material-icons">note_add</i></button>
         </form>
     </div>
     <h4>Presenze</h4>
@@ -74,6 +74,6 @@
                 </td>
             </tr>
         </table>
-        <button mat-flat-button (click)="salvaSuDB()" class="salvaPresenze">SALVA</button>
+        <button mat-flat-button (click)="salvaSuDB()" class="salvaPresenze"><i class="material-icons">save</i></button>
     </div>
 </body>

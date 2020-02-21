@@ -1,13 +1,13 @@
-<button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
-
+<button mat-button (click)="goBack()" class="back"><i class="material-icons">arrow_back_ios</i></button>
 <body style="padding: 20px;">
   <h3>Studente</h3>
-  <div class="box-0">
-    <div class="box">
-      <form [formGroup]="modificaStudente" (ngSubmit)="onSubmitStudente(modificaStudente.value);this.router.navigate(['/studenti'])">
-        <div>
+  <form [formGroup]="modificaStudente"
+    (ngSubmit)="onSubmitStudente(modificaStudente.value);this.router.navigate(['/studenti'])">
+    <div class="box-0">
+      <div class="box">
+        <div class="box-3">
           <label for="nome">
-            Nome
+            Nome:
           </label>
           <mat-form-field class="input">
             <input matInput id="nome" type="text" formControlName="nome">
@@ -18,7 +18,7 @@
         </div>
         <div>
           <label for="cognome">
-            Cognome
+            Cognome:
           </label>
           <mat-form-field class="input">
             <input matInput id="cognome" type="text" formControlName="cognome">
@@ -29,7 +29,7 @@
         </div>
         <div>
           <label for="dataNascita">
-            Data di Nascita
+            Data di Nascita:
           </label>
           <mat-form-field class="input">
             <input matInput id="dataNascita" type="text" formControlName="dataNascita">
@@ -37,7 +37,7 @@
         </div>
         <div>
           <label for="codiceFisc">
-            Codice Fiscale
+            Codice Fiscale:
           </label>
           <mat-form-field class="input">
             <input matInput id="codiceFisc" type="text" formControlName="codiceFisc">
@@ -48,7 +48,7 @@
         </div>
         <div>
           <label for="percorsoStudi">
-            Percorso di Studi
+            Percorso di Studi:
           </label>
           <mat-form-field class="input">
             <input matInput id="percorsoStudi" type="text" formControlName="percorsoStudi">
@@ -56,7 +56,7 @@
         </div>
         <div>
           <label for="telefono">
-            Telefono
+            Telefono:
           </label>
           <mat-form-field class="input">
             <input matInput id="telefono" type="text" formControlName="telefono">
@@ -64,41 +64,48 @@
         </div>
         <div>
           <label for="citta">
-            Città di residenza
+            Città di residenza:
           </label>
           <mat-form-field class="input">
             <input matInput id="citta" type="text" formControlName="citta">
           </mat-form-field>
         </div>
-        <button mat-flat-button type="submit">Aggiorna Studente</button>
-      </form>
-      <p>Ore Assenza</p>
-      <mat-list>
-        <mat-list-item *ngFor="let item of materie | keyvalue">
-          {{item.key}} : {{item.value}}
-        </mat-list-item>
-      </mat-list>
-      <p>Ore Assenza Totali : {{oreTotali}}</p>
-      <p>Note:</p>
-      <div>
-        <ul>
-          <li *ngFor="let n of studente.note">
-            {{n}} <button mat-button (click)="eliminaNota(studente.note.indexOf(n))"
-              class="eliminanota">Elimina</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNote(nuovaNota.value); onSubmitStudente(modificaStudente.value)">
-      <div>
-        <div class="box-2">
-          <label for="nota"> Nota:</label>
-          <mat-form-field>
-            <input matInput id="nota" type="text" formControlName="nota">
-          </mat-form-field>
+        <p>Note:</p>
+        <div>
+          <table class="table-ore">
+            <tr *ngFor="let n of studente.note">
+              <td style="width: 70%;">{{n}}</td>
+              <td><button mat-button (click)="eliminaNota(studente.note.indexOf(n))" class="eliminanota"><i
+                    class="material-icons">
+                    delete
+                  </i></button></td>
+            </tr>
+          </table>
         </div>
-        <button mat-flat-button type="submit" class="salvanota">Salva nota</button>
       </div>
-    </form>
+      <button mat-flat-button type="submit" class="salvanota"><i class="material-icons">save</i></button>
+    </div>
+  </form>
+  <form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNote(nuovaNota.value); onSubmitStudente(modificaStudente.value)">
+    <div>
+      <div class="box-2">
+        <label for="nota"> Nota:</label>
+        <mat-form-field>
+          <input matInput id="nota" type="text" formControlName="nota">
+        </mat-form-field>
+      </div>
+      <button mat-flat-button type="submit" class="salvanota"><i class="material-icons">note_add</i></button>
+    </div>
+  </form>
+  <div class="box-2">
+    <table class="table-ore">
+      <th> Materia</th>
+      <th>Ore Assenza</th>
+      <tr *ngFor="let item of materie | keyvalue">
+        <td>{{item.key}}</td>
+        <td>{{item.value}}</td>
+      </tr>
+    </table>
+    <p class="ore">Ore Assenza Totali: {{oreTotali}}</p>
   </div>
 </body>

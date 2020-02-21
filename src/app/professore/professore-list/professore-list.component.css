@@ -39,12 +39,14 @@ table{
   border-radius: 12px;
 }
 .button {
-  margin-left: 80%;
+  justify-content: right !important;
+  margin-left: 42% !important;
   box-shadow: gray;
   background-color: #6E18CE;
   position: fixed;
-  bottom: 2%;
+  bottom: 5%;
   overflow: hidden;
+  writing-mode: vertical-lr;
 }
 .mat-fab{
   box-sizing: none;
@@ -78,4 +80,11 @@ body {
 }
 h3 {
   color: #6E18CE;
+}
+
+.dettaglio{
+  color: #4287F8;
+}
+.elimina{
+  color: red;
 }

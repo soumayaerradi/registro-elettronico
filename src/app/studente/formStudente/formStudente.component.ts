@@ -24,7 +24,6 @@ export class FormStudenteComponent implements OnInit {
     private _adapter: DateAdapter<any>) { }
 
     onSubmit(nuovoStudente: Studente) {
-      console.log(nuovoStudente);
       let year = new Date(nuovoStudente.dataNascita).getFullYear().toString();
       let month = new Date(nuovoStudente.dataNascita).getMonth() + 1;
       let day = new Date(nuovoStudente.dataNascita).getDate().toString();

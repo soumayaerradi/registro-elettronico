@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudenteService } from '../studente.service';
 import { Studente } from '../studente';
 import { Router } from '@angular/router';
-import {Inject} from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { FormStudenteComponent } from '../formStudente/formStudente.component';
 
 @Component({
@@ -16,7 +15,7 @@ export class StudentiListComponent implements OnInit {
   studenti: Studente[] =[];
   studentiNuovo: Studente[]=[];
   studente : string;
-  displayedColumns: string[] = ['nome', 'cognome', 'dataNascita', 'codiceFisc', 'azioni'];
+  displayedColumns: string[] = ['cognome', 'nome', 'dataNascita', 'codiceFisc', 'azioni'];
   
 
   constructor(private _serviceStudenti: StudenteService,
@@ -58,12 +57,8 @@ export class StudentiListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(FormStudenteComponent, {
+    this.dialog.open(FormStudenteComponent, {
       width: '60%',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 

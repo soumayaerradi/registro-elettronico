@@ -48,6 +48,8 @@ mat-form-field {
   label {
     margin-left: 10%;
     margin-right: 2%;
+    display: inline-block;
+    width: 20%;
     color: #4287F8;
   }
 

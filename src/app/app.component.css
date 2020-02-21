@@ -17,6 +17,7 @@ mat-sidenav-content, mat-sidenav-container, mat-sidenav {
     font-family: 'Nunito', sans-serif !important;
     color:  #6E18CE;
     margin-bottom: 10%;
+    font-size: 17px;
 }
 #studenti{
     margin-top: 35%;

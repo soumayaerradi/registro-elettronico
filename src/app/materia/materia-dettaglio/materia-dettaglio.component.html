@@ -1,10 +1,14 @@
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
 <body style="padding: 20px;">
+  <h3 class="titolo">Materia</h3>
   <div class="box">
-    <h3>Materia: {{materia.titolo | uppercase}}</h3>
-    <p class="colore">Colore: <mat-icon class="pallina" [ngStyle]="{'color':materia.colore}">fiber_manual_record
-      </mat-icon>
-    </p>
+    <h4>{{materia.titolo | uppercase}}  <mat-icon class="pallina" [ngStyle]="{'color':materia.colore}">extension
+    </mat-icon></h4>
+   
+  </div>
+
+  <div class="box-3">
+    <h5>Totale ore occupate: {{totOre}}</h5>
   </div>
 
 <table class="box-2">
@@ -13,7 +17,7 @@
   <th>Professore</th>
   <th>Inizio</th>
   <th>Fine</th>
-  <th>Note</th>
+  <th>Dettaglio</th>
 </thead>
 <tbody>
   <tr *ngFor="let evento of eventiMateria">
@@ -21,37 +25,8 @@
   <td>{{evento.prof}}</td>
   <td>{{evento.start.toString().slice(0,21)}}</td>
   <td>{{evento.end.toString().slice(0,21)}}</td>
-  <td><li *ngFor="let nota of evento.note">{{nota}}</li></td>
+  <td class="dettaglio" (click)="routerlink(evento)"><button mat-flat-button><i class="material-icons">visibility</i></button></td>
 </tr>
 </tbody>
 </table>
-<!-- <table mat-table [dataSource]="eventiMateria">
-  <ng-container matColumnDef="materia">
-    <th mat-header-cell *matHeaderCellDef> Materia </th>
-    <td mat-cell *matCellDef="let evento"> {{evento.title}} </td>
-  </ng-container>
-  <ng-container matColumnDef="professore">
-    <th mat-header-cell *matHeaderCellDef> Professore </th>
-    <td mat-cell *matCellDef="let evento"> {{evento.prof}} </td>
-  </ng-container>
-  <ng-container matColumnDef="inizio">
-    <th mat-header-cell *matHeaderCellDef> Inizio </th>
-    <td mat-cell *matCellDef="let evento"> {{evento.start.toString().slice(0,21)}} </td>
-  </ng-container>
-  <ng-container matColumnDef="fine">
-    <th mat-header-cell *matHeaderCellDef> Fine </th>
-    <td mat-cell *matCellDef="let evento"> {{evento.end.toString().slice(0,21)}} </td>
-  </ng-container>
-  <ng-container matColumnDef="note">
-    <th mat-header-cell *matHeaderCellDef> Note </th>
-    <td mat-cell *matCellDef="let evento">
-      <li *ngFor="let nota of evento.note">{{nota}}</li>
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table> -->
-<div class="box-3">
-  <h5>Totale ore occupate: {{totOre}}</h5>
-</div>
 </body>

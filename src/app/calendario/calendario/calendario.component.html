@@ -23,14 +23,10 @@
     </mwl-calendar-month-view>
   </div>
 </div>
-<br><br><br>
+<button class="btn btn-primary pull-right" (click)="addEvent();"><i class="material-icons">add_box</i></button>
+    <button class="btn btn-primary pull-right" (click)="salvaEventi(); refresh.next()"><i class="material-icons">save</i></button>
 <div>
-  <h3>
-    Eventi
-    <button class="btn btn-primary pull-right" (click)="addEvent();">Aggiungi</button>
-    <button class="btn btn-primary pull-right" (click)="salvaEventi(); refresh.next()">Salva</button>
-    <div class="clearfix"></div>
-  </h3>
+  <div class="clearfix"></div>
   <div class="table-responsive" *ngIf="activeDayIsOpen">
     <table class="table table-bordered">
       <thead>
@@ -67,7 +63,9 @@
               dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-            <button class="btn btn-danger" (click)="deleteEvent(event); refresh.next()">Elimina</button>
+            <button class="btn btn-danger" (click)="deleteEvent(event); refresh.next()"><i class="material-icons">
+              delete
+              </i></button>
           </td>
         </tr>
       </tbody>
