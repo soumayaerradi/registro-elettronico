@@ -68,10 +68,9 @@
                     </ng-template>
                 </td>
                 <td *ngIf="controlloRitardo(std)">
-                    <input class="form-control" type="text" mwlFlatpickr
-                        [(ngModel)]="std.storicoAPR[evento.id].oraEntrata" (ngModelChange)="calcolaOreRitardo(std)"
-                        [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i"
-                        altFormat="F j, Y H:i" placeholder="Not set" />
+                    <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="std.storicoAPR[evento.id].oraEntrata"
+                    (ngModelChange)="calcolaOreRitardo(std); dateController(std)" [altInput]="true" [convertModelValue]="true"
+                    [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
                 </td>
             </tr>
         </table>

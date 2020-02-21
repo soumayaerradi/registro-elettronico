@@ -40,11 +40,10 @@ table{
 }
 .button {
   margin-left: 80%;
-  margin-right: 15%;
   box-shadow: gray;
   background-color: #6E18CE;
   position: fixed;
-  bottom: 12%;
+  bottom: 2%;
   overflow: hidden;
 }
 .mat-fab{

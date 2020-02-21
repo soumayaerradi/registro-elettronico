@@ -8,10 +8,9 @@ import { StudenteDettaglioComponent } from './studente-dettaglio/studente-dettag
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormStudenteComponent } from './formStudente/formStudente.component';
-import { StudenteModificaComponent } from './studente-modifica/studente-modifica.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule, MatFormFieldModule, MatListModule} from '@angular/material';
+import {MatIconModule, MatFormFieldModule, MatListModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -19,8 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 const routes: Routes = [
   { path: '', component: StudentiListComponent },
   { path: 'nuovo', component: FormStudenteComponent },
-  { path: 'dettaglio/:codiceFisc', component: StudenteDettaglioComponent },
-  { path: 'modifica/:codiceFisc', component: StudenteModificaComponent}
+  { path: 'dettaglio/:codiceFisc', component: StudenteDettaglioComponent }
 ]
 
 @NgModule({
@@ -28,7 +26,6 @@ const routes: Routes = [
     StudentiListComponent,
     StudenteDettaglioComponent,
     FormStudenteComponent,
-    StudenteModificaComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +41,9 @@ const routes: Routes = [
     MatFormFieldModule,
     MatListModule,
     MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class StudenteModule { }

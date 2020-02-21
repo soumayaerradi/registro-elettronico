@@ -30,7 +30,6 @@ export class MateriaComponent implements OnInit {
     this.listaMaterie = [];
     this._materieService.getMat().subscribe((materia: Materia[]) => {
       this.listaMaterie = materia;
-      console.log(materia);
     });
   }
 

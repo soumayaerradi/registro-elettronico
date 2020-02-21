@@ -2,18 +2,76 @@
 
 <body style="padding: 20px;">
   <h3>Studente</h3>
-  <button mat-button routerLink="../../modifica/{{studente.codiceFisc}}" class="modifica">Modifica</button>
   <div class="box-0">
     <div class="box">
-      <mat-list>
-        <mat-list-item>Nome: {{studente.nome}}</mat-list-item>
-        <mat-list-item>Cognome: {{studente.cognome}}</mat-list-item>
-        <mat-list-item>Data di nascita: {{studente.dataNascita}}</mat-list-item>
-        <mat-list-item>Codice fiscale: {{studente.codiceFisc}}</mat-list-item>
-        <mat-list-item>Percorso di studi: {{studente.percorsoStudi}}</mat-list-item>
-        <mat-list-item>Telefono: {{studente.telefono}}</mat-list-item>
-        <mat-list-item>Città di residenza: {{studente.citta}}</mat-list-item>
-      </mat-list>
+      <form [formGroup]="modificaStudente" (ngSubmit)="onSubmitStudente(modificaStudente.value);this.router.navigate(['/studenti'])">
+        <div>
+          <label for="nome">
+            Nome
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="nome" type="text" formControlName="nome">
+            <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+              <span *ngIf="nome.errors.required">Campo obbligatorio</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="cognome">
+            Cognome
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="cognome" type="text" formControlName="cognome">
+            <mat-error *ngIf="cognome.invalid && (cognome.dirty || cognome.touched)">
+              <span *ngIf="cognome.errors.required">Campo obbligatorio</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="dataNascita">
+            Data di Nascita
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="dataNascita" type="text" formControlName="dataNascita">
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="codiceFisc">
+            Codice Fiscale
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="codiceFisc" type="text" formControlName="codiceFisc">
+            <mat-error *ngIf="codiceFisc.invalid && (codiceFisc.dirty || codiceFisc.touched)">
+              <span *ngIf="codiceFisc.errors.required">Campo obbligatorio</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="percorsoStudi">
+            Percorso di Studi
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="percorsoStudi" type="text" formControlName="percorsoStudi">
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="telefono">
+            Telefono
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="telefono" type="text" formControlName="telefono">
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="citta">
+            Città di residenza
+          </label>
+          <mat-form-field class="input">
+            <input matInput id="citta" type="text" formControlName="citta">
+          </mat-form-field>
+        </div>
+        <button mat-flat-button type="submit">Aggiorna Studente</button>
+      </form>
       <p>Ore Assenza</p>
       <mat-list>
         <mat-list-item *ngFor="let item of materie | keyvalue">
@@ -31,7 +89,7 @@
         </ul>
       </div>
     </div>
-    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
+    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNote(nuovaNota.value); onSubmitStudente(modificaStudente.value)">
       <div>
         <div class="box-2">
           <label for="nota"> Nota:</label>

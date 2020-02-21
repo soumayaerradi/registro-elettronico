@@ -21,7 +21,10 @@ import { Router } from '@angular/router';
 import { CalendarioService } from '../calendario.service';
 import { Professore } from 'src/app/professore/professore';
 import { ProfessoreService } from 'src/app/professore/professore.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { StudenteService } from 'src/app/studente/studente.service';
+import { Studente } from 'src/app/studente/studente';
+import { MatSnackBar } from '@angular/material';
+
 const colors = {
   red: {
     primary: '#ad2121'
@@ -36,13 +39,16 @@ const colors = {
     primary: '#6d23ce'
   }
 };
+
 @Component({
   selector: 'app-calendario',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
+
 export class CalendarioComponent implements OnInit {
+
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
@@ -51,11 +57,17 @@ export class CalendarioComponent implements OnInit {
   events: CalendarEvent[] = [];
   activeDayIsOpen: boolean = false;
   listaProf: Professore[];
+  listaStudenti: Studente[];
+  eventiNonModificati: any[] = [];
+  millisecond = 2000;
+
   constructor(
     private router: Router,
     private _calendarioService: CalendarioService,
     private _professoreService: ProfessoreService,
+    private _studenteService: StudenteService,
     private _snackBar: MatSnackBar) { }
+
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -69,9 +81,11 @@ export class CalendarioComponent implements OnInit {
       this.viewDate = date;
     }
   }
+
   eventClicked({ event }: { event: CalendarEvent }): void {
     this.router.navigate([`calendario/${event.id}`]);
   }
+
   eventTimesChanged({
     event,
     newStart,
@@ -88,6 +102,7 @@ export class CalendarioComponent implements OnInit {
       return iEvent;
     });
   }
+
   addEvent(): void {
     let newId = this.genId(this.events);
     this.events = [
@@ -110,18 +125,25 @@ export class CalendarioComponent implements OnInit {
     this.activeDayIsOpen = true;
     this.salvaEventi();
   }
+
   deleteEvent(eventToDelete: CalendarEvent) {
+    this._studenteService.removeStoricoAPRevento(eventToDelete, this.listaStudenti);
     this._calendarioService.removeEvento(eventToDelete.id.toString());
   }
+
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
   genId(events: CalendarEvent[]): number {
     return events.length > 0 ? Math.max(...events.map(event => event.id)) + 1 : 1;
   }
+
   salvaEventi() {
     this._calendarioService.salvaCalendario(this.events);
+    this._studenteService.modificaStoriciAPR(this.events, this.listaStudenti, this.eventiNonModificati);
   }
+
   getEventi() {
     this._calendarioService.getEvents().subscribe(
       (events) => {
@@ -140,32 +162,46 @@ export class CalendarioComponent implements OnInit {
               note: [],
             }
           );
+          this.eventiNonModificati.push({
+            title: evt.title,
+            start: new Date(evt.start),
+            end: new Date(evt.end)
+          });
         });
         this.refresh.next();
       }
     );
   }
+
   getProfessori() {
     this._professoreService.getProfessori().subscribe((listP: Professore[]) => {
       this.listaProf = listP;
-      console.log(this.listaProf);
     });
   }
+
   assegnaMateria(prof: Professore, evento: CalendarEvent) {
     evento.title = prof.materia.titolo;
     evento.color = { primary: prof.materia.colore };
     this.events[this.events.indexOf(evento)] = evento;
   }
 
-  dateController(event, action) {
-    if (event.end < event.start) {
-      event.end = event.start;
-      this._snackBar.open("LA DATA DI FINE NON PUO' PRECEDERE QUELLA DI INIZIO!",action, {duration:4000});
-    }
-  }
-
   ngOnInit() {
     this.getEventi();
     this.getProfessori();
+    this.getStudenti();
   }
+
+  getStudenti() {
+    this._studenteService.getStudenti().subscribe((listaStudenti: Studente[]) => {
+      this.listaStudenti = listaStudenti;
+    });
+  }
+
+  dateController(event: CalendarEvent) {
+    if (event.end < event.start) {
+      event.end = new Date(event.start);
+      this._snackBar.open('OCCHIO ALLE DATE!', 'OK', { duration: this.millisecond });
+    }
+  }
+
 }

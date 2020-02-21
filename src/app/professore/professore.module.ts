@@ -8,7 +8,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormProfessoreComponent } from './formProfessore/formProfessore.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfessoreDettaglioComponent } from './professore-dettaglio/professore-dettaglio.component';
-import { ProfessoreModificaComponent } from './professore-modifica/professore-modifica.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule, MatDialogModule, MatFormFieldModule} from '@angular/material';
@@ -22,16 +21,14 @@ import { MatSelectModule } from '@angular/material/select';
 const routes: Routes = [
   { path: '', component: ProfessoreListComponent },
   { path: 'nuovo', component: FormProfessoreComponent },
-  { path: 'dettaglio/:codiceFisc', component: ProfessoreDettaglioComponent },
-  { path: 'modifica/:codiceFisc', component: ProfessoreModificaComponent}
+  { path: 'dettaglio/:codiceFisc', component: ProfessoreDettaglioComponent }
 ]
 
 @NgModule({
   declarations: [
     ProfessoreListComponent,
     ProfessoreDettaglioComponent,
-    FormProfessoreComponent,
-    ProfessoreModificaComponent,
+    FormProfessoreComponent
   ],
   imports: [
     CommonModule,

@@ -1,35 +1,90 @@
 <button mat-button (click)="goBack()"><i class="material-icons">arrow_back_ios</i></button>
-<body style="padding: 20px;">
-  <h3>Professore</h3>
-  <button mat-button routerLink="../../modifica/{{professore.codiceFisc}}" class="modifica">Modifica</button>
-  <div class="box-0">
-    <div class="box">
-      <mat-list>
-        <mat-list-item>Nome: {{professore.nome}}</mat-list-item>
-        <mat-list-item>Cognome: {{professore.cognome}}</mat-list-item>
-        <mat-list-item>Codice fiscale: {{professore.codiceFisc}}</mat-list-item>
-        <mat-list-item>Materia: {{professore.materia.titolo}}</mat-list-item>
-        <mat-list-item>Telefono: {{professore.telefono}}</mat-list-item>
-      </mat-list>
-      <p>Note:</p>
-      <div>
-        <ul>
-          <li *ngFor="let n of professore.note">
-            {{n}} <button mat-button (click)="eliminaNota(professore.note.indexOf(n))" class="eliminanota">Elimina</button>
-          </li>
-        </ul>
-      </div>
+
+<body style="padding: 50px;">
+  <h3>DETTAGLIO PROFESSORE</h3>
+  <form [formGroup]="modificaProfessore" (ngSubmit)="onSubmitProfessore(modificaProfessore.value); router.navigate(['/professori']);"
+    style="padding: 40px;">
+    <div>
+      <label for="nome">
+        Nome
+      </label>
+      <mat-form-field class="input">
+        <input matInput id="nome" type="text" formControlName="nome">
+        <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+          <span *ngIf="nome.errors.required">Campo obbligatorio</span>
+        </mat-error>
+      </mat-form-field>
     </div>
-      <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
-        <div>
-          <div class="box-2">
-            <label for="nota">Nota:</label>
-            <mat-form-field>
-              <input matInput id="nota" type="text" formControlName="nota">
-            </mat-form-field>
-          </div>
-          <button mat-flat-button type="submit" class="salvanota">Salva nota</button>
-        </div>
-      </form>
+    <div>
+      <label for="cognome">
+        Cognome
+      </label>
+      <mat-form-field class="input">
+        <input matInput id="cognome" type="text" formControlName="cognome">
+        <mat-error *ngIf="cognome.invalid && (cognome.dirty || cognome.touched)">
+          <span *ngIf="cognome.errors.required">Campo obbligatorio</span>
+        </mat-error>
+      </mat-form-field>
     </div>
+    <div>
+      <label for="codiceFisc">
+        Codice Fiscale
+      </label>
+      <mat-form-field class="input">
+        <input matInput id="codiceFisc" type="text" formControlName="codiceFisc">
+        <mat-error *ngIf="codiceFisc.invalid && (codiceFisc.dirty || codiceFisc.touched)">
+          <span *ngIf="codiceFisc.errors.required">Campo obbligatorio</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <label for="sesso">
+        Sesso
+      </label>
+      <mat-form-field class="input">
+        <input matInput id="sesso" type="text" formControlName="sesso">
+      </mat-form-field>
+    </div>
+    <div>
+      <label for="materia">
+        Materia
+      </label>
+      <mat-form-field class="input">
+        <mat-select formControlName="materia" [placeholder]="professore.materia.titolo">
+        <mat-option *ngFor="let materia of listaMaterie" [value]="materia">
+            {{materia.titolo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <label for="telefono">
+        Telefono
+      </label>
+      <mat-form-field class="input">
+        <input matInput id="telefono" type="text" formControlName="telefono">
+      </mat-form-field>
+    </div>
+    <button mat-flat-button type="submit">Aggiorna professore</button>
+  </form>
 </body>
+<br><br><br>
+<h4>Note</h4>
+<div>
+  <ul>
+    <li *ngFor="let n of professore.note">
+      {{n}} <button mat-button (click)="eliminaNota(professore.note.indexOf(n))">Elimina</button>
+    </li>
+  </ul>
+</div>
+<form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNota(nuovaNota.value); onSubmitProfessore(modificaProfessore.value)">
+  <div>
+    <label for="nota">
+      Nota:
+    </label>
+    <mat-form-field>
+      <input matInput id="nota" type="text" formControlName="nota">
+    </mat-form-field>
+  </div>
+  <button mat-flat-button type="submit">SALVA NOTA</button>
+</form>

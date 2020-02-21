@@ -6,6 +6,7 @@ import { CalendarioService } from '../calendario.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { StudenteService } from 'src/app/studente/studente.service';
 import { Studente } from 'src/app/studente/studente';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-calendario-dettaglio',
@@ -21,13 +22,15 @@ export class CalendarioDettaglioComponent implements OnInit {
   valueString: string[] = ['presente', 'assente', 'ritardo'];
   control: boolean;
   viewDate: Date = new Date();
+  millisecond = 2000;
 
   constructor(
     private _location: Location,
     private _route: ActivatedRoute,
     private _calendarioService: CalendarioService,
     private _formBuilder: FormBuilder,
-    private _studenteService: StudenteService) {
+    private _studenteService: StudenteService,
+    private _snackBar: MatSnackBar) {
 
     this.nuovaNota = this._formBuilder.group({
       nota: '',
@@ -131,7 +134,20 @@ export class CalendarioDettaglioComponent implements OnInit {
     std.storicoAPR[this.evento.id].oreAss = totaleOreLezione - parzialeOreFatte;
   }
 
+  dateController(std: Studente) {
+    if (std.storicoAPR[this.evento.id].oraEntrata > new Date(this.evento.end)) {
+      std.storicoAPR[this.evento.id].oraEntrata = new Date(this.evento.end);
+      this._snackBar.open('OCCCHIO ALLE DATE!', 'OK', { duration: this.millisecond });
+    } else if (std.storicoAPR[this.evento.id].oraEntrata < new Date(this.evento.start)) {
+      std.storicoAPR[this.evento.id].oraEntrata = new Date(this.evento.start);
+      this._snackBar.open('OCCHIO ALLE DATE!', 'OK', { duration: this.millisecond });
+    }
+  }
+
   salvaSuDB() {
     this._studenteService.aggiornaStoriciAPR(this.listaStudenti, this.evento.id);
   }
+
+
+
 }
