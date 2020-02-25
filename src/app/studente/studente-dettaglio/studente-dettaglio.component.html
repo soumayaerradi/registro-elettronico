@@ -32,9 +32,9 @@
             Sesso
           </label>
           <mat-form-field class="input">
-            <mat-select matInput id="sesso" type="select" style="color: #6E18CE;" formControlName="sesso">
-              <mat-option value="M" style="color: #6E18CE;">M</mat-option>
-              <mat-option value="F" style="color: #6E18CE;">F</mat-option>
+            <mat-select matInput id="sesso" type="select" formControlName="sesso">
+              <mat-option value="M">M</mat-option>
+              <mat-option value="F">F</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -121,5 +121,6 @@
       </tr>
     </table>
     <p class="ore">Ore Assenza Totali: {{oreTotali}}</p>
+    <p class="ore">Numero entrate in ritardo: {{ritardiTotali}}</p>
   </div>
 </body>

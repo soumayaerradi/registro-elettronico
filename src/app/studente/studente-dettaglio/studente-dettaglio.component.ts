@@ -20,6 +20,7 @@ export class StudenteDettaglioComponent implements OnInit {
   oreTotali = 0;
   nuovaNota: FormGroup;
   modificaStudente: FormGroup;
+  ritardiTotali: number = 0;
 
   constructor(
     private _studenteService: StudenteService,
@@ -53,6 +54,7 @@ export class StudenteDettaglioComponent implements OnInit {
     const codice: string = this._route.snapshot.paramMap.get('codiceFisc');
     this._studenteService.getStudente(codice).subscribe((std: Studente) => {
       this.studente = std;
+      this.getRitardiFatti();
       this.formStudente();
       this.getMaterie();
     });
@@ -123,6 +125,16 @@ export class StudenteDettaglioComponent implements OnInit {
     }
     this.studente.note.push(nuovaNota['nota']);
     this._studenteService.aggiornaStudente(this.studente);
+  }
+
+  getRitardiFatti() {
+    if (this.studente.storicoAPR) {
+      for (var key in this.studente.storicoAPR) {
+        if (this.studente.storicoAPR[key].presenza == 'ritardo') {
+          this.ritardiTotali += 1;
+        }
+      }
+    }
   }
 
 }
