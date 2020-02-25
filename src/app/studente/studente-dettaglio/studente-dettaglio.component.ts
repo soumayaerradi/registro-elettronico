@@ -41,6 +41,7 @@ export class StudenteDettaglioComponent implements OnInit {
       percorsoStudi: '',
       telefono: '',
       citta: '',
+      sesso:''
     });
   }
 
@@ -62,14 +63,15 @@ export class StudenteDettaglioComponent implements OnInit {
       nome: this.studente.nome,
       cognome: this.studente.cognome,
       dataNascita: this.studente.dataNascita,
-      codiceFisc: this.studente.codiceFisc,
+      codiceFisc: {value:this.studente.codiceFisc, disabled:true},
       percorsoStudi: this.studente.percorsoStudi,
       telefono: this.studente.telefono,
       citta: this.studente.citta,
+      sesso: this.studente.sesso
     });
   }
-
   onSubmitStudente(aggiornaStudente: Studente) {
+    aggiornaStudente.codiceFisc = this.studente.codiceFisc
     this._studenteService.aggiornaStudente(aggiornaStudente);
   }
 
@@ -87,6 +89,10 @@ export class StudenteDettaglioComponent implements OnInit {
 
   get codiceFisc(): AbstractControl {
     return this.modificaStudente.get('codiceFisc');
+  }
+
+  get nota(): AbstractControl {
+    return this.nuovaNota.get('nota');
   }
 
   getMaterie() {

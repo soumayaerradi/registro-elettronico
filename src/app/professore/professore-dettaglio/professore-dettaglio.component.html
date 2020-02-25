@@ -10,8 +10,8 @@
             Nome:
           </label>
           <mat-form-field class="input">
-            <input matInput id="nome" type="text" formControlName="nome">
-            <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            <input matInput id="nome" type="text" formControlName="nome" required>
+            <mat-error *ngIf="nome.value===''">
               <span *ngIf="nome.errors.required">Campo obbligatorio</span>
             </mat-error>
           </mat-form-field>
@@ -21,8 +21,8 @@
             Cognome:
           </label>
           <mat-form-field class="input">
-            <input matInput id="cognome" type="text" formControlName="cognome">
-            <mat-error *ngIf="cognome.invalid && (cognome.dirty || cognome.touched)">
+            <input matInput id="cognome" type="text" formControlName="cognome"required>
+            <mat-error *ngIf="cognome.value===''">
               <span *ngIf="cognome.errors.required">Campo obbligatorio</span>
             </mat-error>
           </mat-form-field>
@@ -43,7 +43,10 @@
             Sesso:
           </label>
           <mat-form-field class="input">
-            <input matInput id="sesso" type="text" formControlName="sesso">
+            <mat-select matInput id="sesso" type="select" style="color: #6E18CE;" formControlName="sesso">
+              <mat-option value="M" style="color: #6E18CE;">M</mat-option>
+              <mat-option value="F" style="color: #6E18CE;">F</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div>
@@ -68,12 +71,6 @@
         </div>
         <p>Note:</p>
         <div>
-          <!-- <ul>
-            <li *ngFor="let n of professore.note">
-              {{n}} <button mat-button (click)="eliminaNota(professore.note.indexOf(n))"
-                class="eliminanota">Elimina</button>
-            </li>
-          </ul> -->
           <table class="table-ore">
             <tr *ngFor="let n of professore.note">
               <td style="width: 70%;">{{n}}</td>
@@ -85,7 +82,7 @@
           </table>
         </div>
       </div>
-      <button mat-flat-button type="submit" class="salvaprof"><i class="material-icons">save</i></button>
+      <button mat-flat-button type="submit" class="salvaprof" [disabled]="!modificaProfessore.valid"><i class="material-icons">save</i></button>
     </div>
   </form>
     <form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNota(nuovaNota.value); onSubmitProfessore(modificaProfessore.value)">
@@ -93,10 +90,13 @@
         <div class="box-2">
           <label for="nota"> Nota:</label>
           <mat-form-field>
-            <input matInput id="nota" type="text" formControlName="nota">
-          </mat-form-field>
+            <input matInput id="nota" type="text" formControlName="nota" required>
+            <mat-error *ngIf="nota.invalid && (nota.dirty || nota.touched)">
+                <span *ngIf="nota.errors.required">Campo obbligatorio</span>
+            </mat-error>
+        </mat-form-field>
         </div>
-        <button mat-flat-button type="submit" class="salvanota"><i class="material-icons">note_add</i></button>
+        <button mat-flat-button type="submit" class="salvanota" [disabled]="!nuovaNota.valid"><i class="material-icons">note_add</i></button>
       </div>
     </form>
 </body>

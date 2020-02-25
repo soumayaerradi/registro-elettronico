@@ -42,6 +42,7 @@ export class FormStudenteComponent implements OnInit {
       percorsoStudi: '',
       telefono: '',
       citta: '',
+      sesso:''
     });
     this.italy();
   }

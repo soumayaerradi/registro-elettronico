@@ -12,8 +12,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { CalendarioDettaglioComponent } from './calendario-dettaglio/calendario-dettaglio.component';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule, MatListModule } from '@angular/material';
+import { MatInputModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -36,7 +37,9 @@ const routes: Routes = [
     MatButtonModule,
     MatInputModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule
   ],
   declarations: [CalendarioComponent, CalendarioDettaglioComponent]
 })

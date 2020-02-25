@@ -60,6 +60,7 @@ export class CalendarioComponent implements OnInit {
   listaStudenti: Studente[];
   eventiNonModificati: any[] = [];
   millisecond = 2000;
+  isLoading: boolean = true;
 
   constructor(
     private router: Router,
@@ -187,6 +188,7 @@ export class CalendarioComponent implements OnInit {
 
   ngOnInit() {
     this.getEventi();
+    this.isLoading = false;
     this.getProfessori();
     this.getStudenti();
   }

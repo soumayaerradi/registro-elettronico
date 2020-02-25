@@ -10,7 +10,7 @@
             Nome:
           </label>
           <mat-form-field class="input">
-            <input matInput id="nome" type="text" formControlName="nome">
+            <input matInput id="nome" type="text" formControlName="nome" required>
             <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
               <span *ngIf="nome.errors.required">Campo obbligatorio</span>
             </mat-error>
@@ -21,10 +21,21 @@
             Cognome:
           </label>
           <mat-form-field class="input">
-            <input matInput id="cognome" type="text" formControlName="cognome">
+            <input matInput id="cognome" type="text" formControlName="cognome" required>
             <mat-error *ngIf="cognome.invalid && (cognome.dirty || cognome.touched)">
               <span *ngIf="cognome.errors.required">Campo obbligatorio</span>
             </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <label for="sesso">
+            Sesso
+          </label>
+          <mat-form-field class="input">
+            <mat-select matInput id="sesso" type="select" style="color: #6E18CE;" formControlName="sesso">
+              <mat-option value="M" style="color: #6E18CE;">M</mat-option>
+              <mat-option value="F" style="color: #6E18CE;">F</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div>
@@ -41,7 +52,7 @@
           </label>
           <mat-form-field class="input">
             <input matInput id="codiceFisc" type="text" formControlName="codiceFisc">
-            <mat-error *ngIf="codiceFisc.invalid && (codiceFisc.dirty || codiceFisc.touched)">
+            <mat-error *ngIf="codiceFisc.invalid && (codiceFisc.dirty || codiceFisc.touched)" required>
               <span *ngIf="codiceFisc.errors.required">Campo obbligatorio</span>
             </mat-error>
           </mat-form-field>
@@ -83,7 +94,7 @@
           </table>
         </div>
       </div>
-      <button mat-flat-button type="submit" class="salvanota"><i class="material-icons">save</i></button>
+      <button mat-flat-button type="submit" class="salvanota" [disabled]="!modificaStudente.valid"><i class="material-icons">save</i></button>
     </div>
   </form>
   <form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNote(nuovaNota.value); onSubmitStudente(modificaStudente.value)">
@@ -91,10 +102,13 @@
       <div class="box-2">
         <label for="nota"> Nota:</label>
         <mat-form-field>
-          <input matInput id="nota" type="text" formControlName="nota">
-        </mat-form-field>
+          <input matInput id="nota" type="text" formControlName="nota" required>
+          <mat-error *ngIf="nota.invalid && (nota.dirty || nota.touched)">
+              <span *ngIf="nota.errors.required">Campo obbligatorio</span>
+          </mat-error>
+      </mat-form-field>
       </div>
-      <button mat-flat-button type="submit" class="salvanota"><i class="material-icons">note_add</i></button>
+      <button mat-flat-button type="submit" class="salvanota" [disabled]="!nuovaNota.valid"><i class="material-icons">note_add</i></button>
     </div>
   </form>
   <div class="box-2">

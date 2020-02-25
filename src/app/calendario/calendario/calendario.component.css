@@ -47,4 +47,5 @@ div, table{
 
 .material-icons{
   margin-top: 3%;
+  vertical-align: middle !important;
 }

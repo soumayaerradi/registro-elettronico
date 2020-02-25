@@ -37,7 +37,7 @@ export class ProfessoreDettaglioComponent implements OnInit {
       materia: '',
       sesso: '',
       telefono: '',
-      codiceFisc: ['', Validators.required],
+      codiceFisc: '',
     })
 
   }
@@ -68,11 +68,12 @@ export class ProfessoreDettaglioComponent implements OnInit {
       materia: this.professore.materia,
       sesso: this.professore.sesso,
       telefono: this.professore.telefono,
-      codiceFisc: this.professore.codiceFisc,
+      codiceFisc: {value: this.professore.codiceFisc, disabled: true}
     })
   }
 
   onSubmitProfessore(aggiornaProfessore: Professore) {
+    aggiornaProfessore.codiceFisc = this.professore.codiceFisc;
     this._professoreService.aggiornaProfessore(aggiornaProfessore);
   }
 
@@ -86,6 +87,10 @@ export class ProfessoreDettaglioComponent implements OnInit {
 
   get codiceFisc(): AbstractControl {
     return this.modificaProfessore.get('codiceFisc');
+  }
+
+  get nota(): AbstractControl {
+    return this.nuovaNota.get('nota');
   }
 
   eliminaNota(index: number) {

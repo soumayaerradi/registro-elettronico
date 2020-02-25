@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { CalendarEvent } from 'angular-calendar';
 import { CalendarioService } from '../calendario.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { StudenteService } from 'src/app/studente/studente.service';
 import { Studente } from 'src/app/studente/studente';
 import { MatSnackBar } from '@angular/material';
@@ -33,7 +33,7 @@ export class CalendarioDettaglioComponent implements OnInit {
     private _snackBar: MatSnackBar) {
 
     this.nuovaNota = this._formBuilder.group({
-      nota: '',
+      nota: ['', Validators.required],
     });
   }
 
@@ -148,6 +148,8 @@ export class CalendarioDettaglioComponent implements OnInit {
     this._studenteService.aggiornaStoriciAPR(this.listaStudenti, this.evento.id);
   }
 
-
+  get nota(): AbstractControl {
+    return this.nuovaNota.get('nota');
+  }
 
 }

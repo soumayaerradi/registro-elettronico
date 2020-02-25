@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormStudenteComponent } from './formStudente/formStudente.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule, MatFormFieldModule, MatListModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {MatIconModule, MatFormFieldModule, MatListModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -43,7 +43,8 @@ const routes: Routes = [
     MatSidenavModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class StudenteModule { }

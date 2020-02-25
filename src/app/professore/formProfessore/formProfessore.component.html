@@ -40,7 +40,10 @@
         Sesso
       </label>
       <mat-form-field class="input">
-        <input matInput id="sesso" type="text" formControlName="sesso">
+        <mat-select matInput id="sesso" type="select" style="color: #6E18CE;" formControlName="sesso">
+          <mat-option value="M" style="color: #6E18CE;">M</mat-option>
+          <mat-option value="F" style="color: #6E18CE;">F</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div>
@@ -64,6 +67,6 @@
       </mat-form-field>
     </div>
   </div>
-    <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()"><i class="material-icons">save</i></button>
+    <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()" [disabled]="!nuovoProfessore.valid"><i class="material-icons">save</i></button>
   </form>
 </body>

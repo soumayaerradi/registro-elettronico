@@ -8,4 +8,5 @@ export class Studente {
   percorsoStudi: string;
   storicoAPR: {};
   telefono: number;
+  sesso: string;
 }
