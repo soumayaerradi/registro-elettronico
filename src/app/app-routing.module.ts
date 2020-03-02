@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'professori', loadChildren: './professore/professore.module#ProfessoreModule' },
   { path: 'calendario', loadChildren: './calendario/calendario.module#CalendarioModule'},
   { path: 'materie', loadChildren: './materia/materia.module#MateriaModule'},
+  { path: '', redirectTo: '/calendario', pathMatch: 'full'},
+  { path: '**', redirectTo: '/calendario', pathMatch: 'full'},
 ];
 
 

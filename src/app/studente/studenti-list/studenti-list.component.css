@@ -81,17 +81,12 @@ body {
 h3 {
   color: #6E18CE;
 }
-
 .dettaglio{
   color: #4287F8;
 }
 .elimina{
   color: red;
 }
-
-
-
-
-
-
-
+button:focus{
+  outline: none;
+}

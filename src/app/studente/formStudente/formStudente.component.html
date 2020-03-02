@@ -29,9 +29,9 @@
       Sesso
     </label>
     <mat-form-field class="input">
-      <mat-select matInput id="sesso" type="select" style="color: #6E18CE;" formControlName="sesso">
-        <mat-option value="M" style="color: #6E18CE;">M</mat-option>
-        <mat-option value="F" style="color: #6E18CE;">F</mat-option>
+      <mat-select matInput id="sesso" type="select" formControlName="sesso">
+        <mat-option value="M">M</mat-option>
+        <mat-option value="F">F</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -81,6 +81,10 @@
     </mat-form-field>
   </div>
 </div>
-  <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()"><i class="material-icons">save</i></button>
+  <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()" disabled *ngIf="!nuovoStudente.valid; else studenteValido"><i class="material-icons">save</i></button>
 </form>
 </body>
+
+<ng-template #studenteValido>
+  <button mat-flat-button type="submit" class="nuovo" (click)="closeOpenDialog()"><i class="material-icons">save</i></button>
+</ng-template>

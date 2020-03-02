@@ -19,10 +19,11 @@ export class CalendarioDettaglioComponent implements OnInit {
   nuovaNota: FormGroup;
   i: string;
   listaStudenti: Studente[];
-  valueString: string[] = ['presente', 'assente', 'ritardo'];
+  valueString: string[] = ['Presente', 'Assente', 'Ritardo'];
   control: boolean;
   viewDate: Date = new Date();
   millisecond = 2000;
+  someOneRitardo: boolean = false;
 
   constructor(
     private _location: Location,
@@ -83,7 +84,7 @@ export class CalendarioDettaglioComponent implements OnInit {
           std.storicoAPR[this.evento.id] = {
             id: this.evento.id,
             titolo: this.evento.title,
-            presenza: 'presente',
+            presenza: 'Presente',
             oreAss: 0,
           };
           this.listaStudenti[index].storicoAPR[this.evento.id] = std.storicoAPR[this.evento.id];
@@ -95,7 +96,7 @@ export class CalendarioDettaglioComponent implements OnInit {
         std.storicoAPR[this.evento.id] = {
           id: this.evento.id,
           titolo: this.evento.title,
-          presenza: 'presente',
+          presenza: 'Presente',
           oreAss: 0,
         };
         this.listaStudenti[index].storicoAPR[this.evento.id] = std.storicoAPR[this.evento.id];
@@ -105,24 +106,40 @@ export class CalendarioDettaglioComponent implements OnInit {
   }
 
   controlloRitardo(std: Studente) {
-    if (std.storicoAPR[this.evento.id].presenza == 'ritardo') {
+    if (std.storicoAPR[this.evento.id].presenza == 'Ritardo') {
       return true;
     } else {
       return false;
     }
   }
 
+  checkRitardo() {
+    let ritardo = false;
+    this.listaStudenti.forEach((std: Studente) => {
+      if (std.storicoAPR[this.evento.id].presenza == 'Ritardo') {
+        console.log("checkRitardo: true");
+        ritardo = true;
+      }
+    });
+    if (!ritardo) {
+      this.someOneRitardo = false;
+    } else {
+      this.someOneRitardo = true;
+    }
+  }
+
   selezioneAPR(std: Studente, str: string) {
     std.storicoAPR[this.evento.id].presenza = str;
-    if (str == 'presente') {
+    if (str == 'Presente') {
       std.storicoAPR[this.evento.id].oreAss = 0;
-    } else if (str == 'assente') {
+    } else if (str == 'Assente') {
       let start = new Date(this.evento.start);
       let end = new Date(this.evento.end);
       std.storicoAPR[this.evento.id].oreAss = Math.abs(start.getTime() - end.getTime()) / 36e5;
     } else {
       std.storicoAPR[this.evento.id].oraEntrata = new Date(this.evento.start);
     }
+    this.checkRitardo();
   }
 
   calcolaOreRitardo(std: Studente) {
@@ -137,10 +154,10 @@ export class CalendarioDettaglioComponent implements OnInit {
   dateController(std: Studente) {
     if (std.storicoAPR[this.evento.id].oraEntrata > new Date(this.evento.end)) {
       std.storicoAPR[this.evento.id].oraEntrata = new Date(this.evento.end);
-      this._snackBar.open('OCCCHIO ALLE DATE!', 'OK', { duration: this.millisecond });
+      this._snackBar.open('Attenzione alle date!', '', { duration: this.millisecond, panelClass: 'snackbar' });
     } else if (std.storicoAPR[this.evento.id].oraEntrata < new Date(this.evento.start)) {
       std.storicoAPR[this.evento.id].oraEntrata = new Date(this.evento.start);
-      this._snackBar.open('OCCHIO ALLE DATE!', 'OK', { duration: this.millisecond });
+      this._snackBar.open('Attenzione alle date!', '', { duration: this.millisecond, panelClass: 'snackbar' });
     }
   }
 

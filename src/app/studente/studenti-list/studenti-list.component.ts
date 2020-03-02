@@ -4,6 +4,8 @@ import { Studente } from '../studente';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { FormStudenteComponent } from '../formStudente/formStudente.component';
+import { DialogDeleteStudenteComponent } from '../dialogDeleteStudente/dialogDeleteStudente.component';
+import { startOfDay } from 'date-fns';
 
 @Component({
   selector: 'app-studenti-list',
@@ -35,8 +37,13 @@ export class StudentiListComponent implements OnInit {
     );
   }
 
-  removeStudente(codiceStudente: string) {
-    this._serviceStudenti.removeStudente(codiceStudente);
+  openDialogRemove(std: Studente){
+    this.dialog.open(DialogDeleteStudenteComponent, {
+      width: '50%',
+      data: {
+        dataKey: std
+      }
+    });
   }
 
   addStudente() {

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService } from '../app.service';
+import { AngularFireAuth } from '@angular/fire/auth'
+import { MatDialog } from '@angular/material/dialog';
+import { PasswordResetComponent } from '../passwordReset/passwordReset.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -11,20 +14,33 @@ import { AppService } from '../app.service';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  email: string;
+  milliseconds = 3000;
 
-  constructor(private router: Router,
-              private _appService : AppService) { }
-  
+  constructor(
+    private router: Router,
+    public auth: AngularFireAuth,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
+
   ngOnInit() {
   }
 
   login(): void {
-    if (this.username === 'admin' && this.password === 'admin') {
-      this._appService.setAuth();
+    const loginForm = document.querySelector('#login-form');
+    const email = loginForm['login-name'].value;
+    const password = loginForm['login-password'].value;
+    this.auth.auth.signInWithEmailAndPassword(email, password).then(() => {
       this.router.navigate(['calendario']);
-    } else {
-      alert("Invalid credentials");
-      this._appService.authentication = false;
-    }
+    }).catch(err => {
+      this.snackBar.open('EMAIL O PASSWORD ERRATE', 'OK', { duration: this.milliseconds });
+    });
+  }
+
+  passwordReset(): void {
+    this.dialog.open(PasswordResetComponent, {
+      width: '40%',
+      height: '30%'
+    });
   }
 }

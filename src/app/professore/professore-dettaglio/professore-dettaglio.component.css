@@ -48,12 +48,12 @@ li {
 }
 mat-form-field {
   width: 60%;
-  color: #6e18ce !important;
+  color: #666666 !important;
 }
 label {
   margin-left: 6%;
   margin-right: 2%;
-  color: #4287f8;
+  color: #6E18CE;
   width: 20%;
   display: inline-block;
 }
@@ -96,7 +96,6 @@ label {
   font-family: "Nunito", "sans-serfif";
   margin-top: 5%;
 }
-
 #salva {
   margin-top: 1%;
   margin-right: 20%;
@@ -118,7 +117,15 @@ form {
 th{
   color: #4287f8;
 }
-
 .back{
   color: #4287f8;
 }
+button:focus{
+  outline: none;
+  }
+#input{
+    font-family: "Nunito", "sans-serfif";
+  }
+#nota{
+    font-family: "Nunito", "sans-serfif";
+  }

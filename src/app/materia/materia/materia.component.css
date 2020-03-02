@@ -34,12 +34,12 @@ p{
 }
 mat-form-field {
  width: 70%;
- color: #6E18CE !important;
+ color: #666666;
 }
 label {
   margin-left: 15%;
   margin-right: 2%;
-  color: #4287F8;
+  color: #6E18CE;
 }
 .box-2 {
   display: flex;
@@ -93,8 +93,12 @@ width: 60%;
   margin-left: 50%;
   margin-bottom: -4%;
 }
-
 .pallina{
   size: 30%;
 }
-
+button:focus{
+  outline: none;
+}
+#titolo{
+  font-family: "Nunito", "sans-serfif";
+}

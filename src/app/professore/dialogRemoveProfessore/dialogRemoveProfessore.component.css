@@ -1,0 +1,19 @@
+h3 {
+    text-align: center;
+    color: #6E18CE;
+  }
+button{
+    color: #6d23ce;
+    background-color: rgba(221,225, 248, 1);
+    border-radius: 12px;
+    border: none;
+    margin-left: 2%;
+}
+div{
+  display: flex;
+  justify-content: center;
+}
+
+.material-icons{
+  margin-top: 10%;
+}

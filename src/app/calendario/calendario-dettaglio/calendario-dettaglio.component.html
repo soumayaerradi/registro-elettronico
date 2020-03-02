@@ -1,33 +1,28 @@
 <button mat-button (click)="goBack()" class="back"><i class="material-icons">arrow_back_ios</i></button>
-
 <body style="padding: 50px;">
     <h3>Lezione</h3>
     <div class="box-0">
         <div class="box">
-            <mat-list>
-                <mat-list-item>
-                    <span>
-                        <label>Materia: </label>{{evento.title}}
-                    </span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span>
-                        <label>Professore: </label>{{evento.prof}}
-                    </span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span>
-                        <label>Inizio: </label>{{evento.start.toString().slice(0, 21)}}
-                    </span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span>
-                        <label>Fine: </label>{{evento.end.toString().slice(0, 21)}}
-                    </span>
-                </mat-list-item>
-            </mat-list>
+            <table class="table-detail">
+                <tr>
+                    <td><b>Materia:</b></td>
+                    <td>{{evento.title}}</td>
+                </tr>
+                <tr>
+                    <td><b>Professore:</b></td>
+                    <td>{{evento.prof}}</td>
+                </tr>
+                <tr>
+                    <td><b>Inizio:</b></td>
+                    <td>{{evento.start.toString().slice(0, 21)}}</td>
+                </tr>
+                <tr>
+                    <td><b>Fine:</b></td>
+                    <td>{{evento.end.toString().slice(0, 21)}}</td>
+                </tr>
+            </table>
             <p class="note">Note: </p>
-            <table class="table-ore">
+            <table class="table-note">
                 <tr *ngFor="let nota of evento.note">
                     <td style="width: 70%;">{{nota}}</td>
                     <td><button mat-button (click)="removeNota(evento.note.indexOf(nota))" class="eliminanota"><i
@@ -38,17 +33,15 @@
             </table>
         </div>
     </div>
-
     <div class="box-2">
         <form [formGroup]="nuovaNota" (ngSubmit)="onSubmit(nuovaNota.value)">
             <div>
                 <label for="nota">
-                    Aggiungi nota:
+                    Nota:
                 </label>
                 <mat-form-field>
                     <input matInput id="nota" type="text" formControlName="nota">
                     <mat-error *ngIf="nota.invalid && (nota.dirty || nota.touched)">
-                        <span *ngIf="nota.errors.required">Campo obbligatorio</span>
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -58,16 +51,14 @@
     </div>
     <h4>Presenze</h4>
     <div class="box-3">
-        <table>
+        <table class="table-presenze">
             <tr>
-                <th>Codice Fiscale</th>
                 <th>Nome</th>
                 <th>Cognome</th>
-                <th>APR</th>
-
+                <th>Presenza</th>
+                <th *ngIf="someOneRitardo">Ora entrata</th>
             </tr>
             <tr *ngFor="let std of listaStudenti">
-                <td>{{std.codiceFisc}}</td>
                 <td>{{std.nome}}</td>
                 <td>{{std.cognome}}</td>
                 <td>
@@ -89,7 +80,6 @@
                         </mat-form-field>
                     </ng-template>
                 </td>
-                <th *ngIf="controlloRitardo(std)">Ora entrata</th>
                 <td *ngIf="controlloRitardo(std)">
                     <input class="form-control" type="text" mwlFlatpickr
                         [(ngModel)]="std.storicoAPR[evento.id].oraEntrata"

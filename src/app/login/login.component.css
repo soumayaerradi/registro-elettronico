@@ -78,3 +78,14 @@ mat-card{
 #name{
     margin-top: -10%;
 }
+a{
+    font-size: 12px;
+    color: #4287F8 !important;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: underline !important;
+}
+button:focus{
+    outline: none;
+  }

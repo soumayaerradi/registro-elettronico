@@ -23,10 +23,10 @@
         <ng-container matColumnDef="azioni">
           <th mat-header-cell *matHeaderCellDef> Azioni </th>
           <td mat-cell *matCellDef="let professore">
-            <button mat-flat-button routerLink="dettaglio/{{professore.codiceFisc}}" class="dettaglio"><i class="material-icons">
+            <button mat-flat-button matTooltip="Dettaglio" routerLink="dettaglio/{{professore.codiceFisc}}" class="dettaglio"><i class="material-icons">
             visibility
             </i></button>
-            <button mat-flat-button (click)="rimuoviProfessore(professore.codiceFisc)" class="elimina"><i class="material-icons">
+            <button mat-flat-button matTooltip="Elimina"  (click)="openDialogRemove(professore)" class="elimina"><i class="material-icons">
             delete
             </i></button>
           </td>
@@ -37,7 +37,8 @@
     </div>
   </div>
   <div class="button">
-  <button mat-fab (click)="openDialog()" class="button">
+  <button mat-fab matTooltip="Aggiungi professore"
+  [matTooltipPosition]="'above'" (click)="openDialog()" class="button">
     <mat-icon>add</mat-icon>
   </button>
 </div>

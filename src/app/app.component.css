@@ -20,7 +20,13 @@ mat-sidenav-content, mat-sidenav-container, mat-sidenav {
     font-size: 17px;
 }
 #studenti{
-    margin-top: 35%;
+    margin-top: 20%;
+}
+#logout{
+    margin-top: 8% !important;
+    border: solid  #4287F8;
+    border-radius: 12px;
+    margin-left: 19%;
 }
 body {
     background-image: url(src/assets/img/logo2.png),
@@ -38,7 +44,7 @@ mat-icon {
 }
 .mat-drawer-side{
     border-right: solid 1px #4287F8;
-    height: auto;
+    height: 200% !important;
 }
 .menù {
     display: flex;

@@ -24,6 +24,7 @@ import { ProfessoreService } from 'src/app/professore/professore.service';
 import { StudenteService } from 'src/app/studente/studente.service';
 import { Studente } from 'src/app/studente/studente';
 import { MatSnackBar } from '@angular/material';
+import { ExcelService } from '../excel.service';
 
 const colors = {
   red: {
@@ -55,6 +56,7 @@ export class CalendarioComponent implements OnInit {
   viewDate: Date = new Date();
   refresh: Subject<any> = new Subject();
   events: CalendarEvent[] = [];
+  eventiMeseCorrente: CalendarEvent[] = []
   activeDayIsOpen: boolean = false;
   listaProf: Professore[];
   listaStudenti: Studente[];
@@ -67,7 +69,8 @@ export class CalendarioComponent implements OnInit {
     private _calendarioService: CalendarioService,
     private _professoreService: ProfessoreService,
     private _studenteService: StudenteService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private _excelService: ExcelService) { }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -102,6 +105,32 @@ export class CalendarioComponent implements OnInit {
       }
       return iEvent;
     });
+  }
+
+  genMoP(event:CalendarEvent) : string{
+    if(event.start.getHours()<12){
+      return event.orario = 'Mattina';
+    } else{
+      return event.orario = 'Pomeriggio';
+    }
+  }
+
+  eventiQuestoMese(){
+    this.eventiMeseCorrente = [];
+    this.events.forEach(element => {
+      if(isSameMonth(element.start, this.viewDate)){
+        this.eventiMeseCorrente = [
+          ...this.eventiMeseCorrente,
+          {
+            start: element.start,
+            orario : this.genMoP(element),
+            title: element.title,
+            prof: element.prof,
+          }];
+      }
+    });
+    console.log('eventiMeseCorrente'+ this.eventiMeseCorrente);
+    
   }
 
   addEvent(): void {
@@ -202,8 +231,12 @@ export class CalendarioComponent implements OnInit {
   dateController(event: CalendarEvent) {
     if (event.end < event.start) {
       event.end = new Date(event.start);
-      this._snackBar.open('OCCHIO ALLE DATE!', 'OK', { duration: this.millisecond });
+      this._snackBar.open('Attenzione alle date!', '', { duration: this.millisecond, panelClass: 'snackbar' });
     }
+  }
+
+  exportCalendar(): void {
+    this._excelService.exportAsExcelFile(this.eventiMeseCorrente, "calendario");
   }
 
 }

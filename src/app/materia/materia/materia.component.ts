@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Materia } from '../materia';
 import { MateriaService } from '../materia.service';
+import { DialogRemoveMateriaComponent } from '../dialogRemoveMateria/dialogRemoveMateria.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-materia',
@@ -14,7 +16,8 @@ export class MateriaComponent implements OnInit {
   listaMaterie: Materia[];
 
   constructor(private formBuilder: FormBuilder,
-    private _materieService: MateriaService) {
+    private _materieService: MateriaService,
+    public dialog: MatDialog) {
     this.nuovaMateria = this.formBuilder.group({
       titolo: '',
       colore: '',
@@ -33,8 +36,13 @@ export class MateriaComponent implements OnInit {
     });
   }
 
-  deleteMateria(delMateria: Materia){
-    this._materieService.removeMateria(delMateria.titolo);
+  openDialogRemove(mat: Materia){
+    this.dialog.open(DialogRemoveMateriaComponent, {
+      width: '50%',
+      data: {
+        dataKey: mat
+      }
+    });
   }
 
   ngOnInit() {

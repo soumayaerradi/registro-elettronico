@@ -436,6 +436,22 @@
       .cal-tooltip-inner {
         color: #fff;
         background-color: #000; }
+      
+      .mat-select-value{
+        color: #666666 !important;
+        font-family: 'Nunito', sans-serif;
+      }
+
+      .snackbar {
+        background: white;
+        color: #6E18CE;
+      }
+      .snackbar button {
+        color: #6E18CE;
+      }
+      .mat-simple-snackbar{
+        justify-content: center !important;
+      }
   
 
 html, body { height: 100%; }

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { StudenteService } from '../studente.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import {MatDialogRef} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { DateAdapter } from '@angular/material';
 
 @Component({
@@ -23,15 +23,15 @@ export class FormStudenteComponent implements OnInit {
     public dialogRef: MatDialogRef<FormStudenteComponent>,
     private _adapter: DateAdapter<any>) { }
 
-    onSubmit(nuovoStudente: Studente) {
-      let year = new Date(nuovoStudente.dataNascita).getFullYear().toString();
-      let month = new Date(nuovoStudente.dataNascita).getMonth() + 1;
-      let day = new Date(nuovoStudente.dataNascita).getDate().toString();
-      let dataFinale: string = day + "/" + month.toString() + "/" + year;
-      nuovoStudente.dataNascita = dataFinale;
-      this._studentiService.aggiornaStudente(nuovoStudente);
-      this._router.navigate(['/studenti']);
-    }
+  onSubmit(nuovoStudente: Studente) {
+    let year = new Date(nuovoStudente.dataNascita).getFullYear().toString();
+    let month = new Date(nuovoStudente.dataNascita).getMonth() + 1;
+    let day = new Date(nuovoStudente.dataNascita).getDate().toString();
+    let dataFinale: string = day + "/" + month.toString() + "/" + year;
+    nuovoStudente.dataNascita = dataFinale;
+    this._studentiService.aggiornaStudente(nuovoStudente);
+    this._router.navigate(['/studenti']);
+  }
 
   ngOnInit() {
     this.nuovoStudente = this._formBuilder.group({
@@ -42,7 +42,7 @@ export class FormStudenteComponent implements OnInit {
       percorsoStudi: '',
       telefono: '',
       citta: '',
-      sesso:''
+      sesso: ''
     });
     this.italy();
   }
@@ -51,7 +51,7 @@ export class FormStudenteComponent implements OnInit {
     this._location.back();
   }
 
-  closeOpenDialog(){
+  closeOpenDialog() {
     this.dialogRef.close();
   }
 

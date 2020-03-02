@@ -1,126 +1,146 @@
 h3 {
-    color: #6E18CE;
-  }
-  body {
-     background-color: transparent;
-  }
-  .box {
-     border: solid #4287F8;
-     border-radius: 12px;
-     height: auto;
-     width: 80%;
-     margin-left: 15%;
-     display: inline-block;
-    }
-   .nota {
-    color: #6E18CE;
-    margin-left: 500px;
-    margin-top: 15px;
-    }
-   mat-list-item {
-      font-family: "Nunito", "sans-serfif";
-      color: #666666 !important;
-      margin-left: 8%;
-      margin-top: 2%;
-  }
-  .note{
-    color: #4287F8;
-    font-size: 16px;
-    margin-left: 8%;
-    margin-top: 5%;
-  } 
-  li {
-    font-family: "Nunito", "sans-serfif";
-    color: #666666 !important;
-    margin-top: -3%;
-    margin-left: 7%;
-  }
-  mat-form-field {
-   width: 60%;
-   color: #6E18CE !important;
-   margin-left: -8%;
-  }
-  label {
-    margin-left: 10%;
-    margin-right: 8%;
-    color: #6E18CE;
-    display: inline-block;
-    width: 20%;
-  }
-  .box-2 {
-    border: 1.5px solid #4287F8;
-    border-radius: 12px;
-    width: 80%;
-    margin-left: 15%;
-    margin-top: 3.5%;
-  }
-
-  .box-3 {
-    border: solid #4287F8;
-     border-radius: 12px;
-     height: auto;
-     width: 80%;
-     margin-left: 15%;
-    margin-top: 1%;
-  }
-
-  table{
-    font-family: "Nunito", "sans-serfif";
-    color: #666666 !important;
-    display: table;
-    border-collapse: separate;
-    margin-left: 4%;
-    margin-top: 5%;
-    width: 100%;
-  }
-
-  h4{
-    margin-left: 10%;
-    margin-top: 5%;
-    color: #6E18CE;
-  }
-
-  .salvanota, .salvaPresenze {
-    margin-top: 2%;
-    border: 1.5px solid #4287F8;
-    border-radius: 6px;
-    box-shadow: none;
-    background-color: white;
-    position: relative;
-    float: right;
-    color: #6E18CE;
-    font-family: "Nunito", "sans-serfif";
-  }
-
-  .eliminanota {
-    background-color: white;
-    color: red;
-    font-family: "Nunito", "sans-serfif";
-  }
-
-  .back{
-    color: #4287F8;
-  }
-
-  .table-ore {
-    display: table;
-    border-collapse: separate;
-    color: #666666;
-    margin-left: 10.5%;
-    margin-bottom: 5%;
-    width: 100%;
-  }
-
-  .princ{
-    font-family: "Nunito", "sans-serfif";
-    display: table;
-    border-collapse: separate;
-    margin-left: 7%;
-    width: 100%;
-  }
-
-span{
+  color: #6E18CE;
+}
+th {
+  color: #4287F8;
+}
+b {
+  color: #6E18CE;
+}
+body {
+  background-color: transparent;
+}
+.nota {
+  color: #6E18CE;
+  margin-top: 1%;
+}
+mat-list-item {
+  font-family: "Nunito", "sans-serfif";
+  color: #666666 !important;
+  margin-left: 8%;
+  margin-top: 2%;
+}
+.note {
+  color: #4287F8;
+  font-size: 16px;
+  margin-left: 8%;
+  margin-top: 5%;
+}
+li {
+  font-family: "Nunito", "sans-serfif";
+  color: #666666 !important;
+  margin-top: -3%;
+  margin-left: 7%;
+}
+mat-form-field {
+  width: 60%;
+  color: #666666 !important;
+  margin-left: -8%;
+  font-family: "Nunito", "sans-serfif";
+}
+label {
+  margin-left: 10%;
+  margin-right: 8%;
+  color: #6E18CE;
+  display: inline-block;
+  width: 20%;
+}
+.box {
+  border: solid #4287F8;
+  border-radius: 12px;
+  height: auto;
+  width: 80%;
+  margin-left: 15%;
+  display: inline-block;
+}
+.box-2 {
+  border: 1.5px solid #4287F8;
+  border-radius: 12px;
+  width: 80%;
+  margin-left: 15%;
+  margin-top: 3.5%;
+}
+.box-3 {
+  border: solid #4287F8;
+  border-radius: 12px;
+  height: auto;
+  width: 80%;
+  margin-left: 15%;
+  margin-top: 1%;
+}
+h4 {
+  margin-left: 10%;
+  margin-top: 5%;
+  color: #6E18CE;
+}
+.salvanota, .salvaPresenze {
+  margin-top: 2%;
+  border: 1.5px solid #4287F8;
+  border-radius: 6px;
+  box-shadow: none;
+  background-color: white;
+  position: relative;
+  float: right;
+  color: #6E18CE;
+  font-family: "Nunito", "sans-serfif";
+}
+.eliminanota {
+  background-color: white;
+  color: red;
+  font-family: "Nunito", "sans-serfif";
+}
+.back {
+  color: #4287F8;
+}
+.princ {
+  font-family: "Nunito", "sans-serfif";
+  display: table;
+  border-collapse: separate;
+  margin-left: 7%;
+  width: 100%;
+}
+span {
   margin-left: 22%;
   width: 50%;
   font-size: 18px;
+}
+.table-detail {
+  margin-left: 18%;
+  margin-top: 3%;
+}
+.table-detail td, th{
+  text-align: left;
+  padding: 3%;
+  width: 8%;
+  color: #666666 !important;
+}
+.table-presenze td, th {
+  text-align: center;
+  padding: 1%;
+  width: 8%;
+  color: #666666 !important;
+}
+.table-note {
+  display: table;
+  border-collapse: separate;
+  color: #666666;
+  margin-left: 10.5%;
+  margin-bottom: 5%;
+  width: 100%;
+}
+
+th{
+  color: #6E18CE !important;
+}
+
+.table-presenze{
+  margin-top: 2%;
+}
+
+mat-option, mat-select {
+  font-family: "Nunito", "sans-serfif";
+  color: #666666 !important;
+}
+button:focus{
+  outline: none;
 }

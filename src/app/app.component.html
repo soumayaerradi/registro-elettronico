@@ -1,37 +1,33 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 <body class="background">
-<div class="example-container" style="padding: 20px" *ngIf="authentication; else login">
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-      <mat-nav-list>
-        <img src="assets/img/logo.png" class="imgnav">
-       <br>
-        <button mat-button routerLink="studenti" id="studenti" class="side-nav">Studenti</button>
-        <br>
-        <button mat-button routerLink="professori" class="side-nav">Professori</button>
-        <br>
-        <button mat-button routerLink="materie" class="side-nav">Materie</button>
-        <br>
-        <button mat-button routerLink="calendario" class="side-nav">Calendario</button>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="menù">
-      <button mat-icon-button (click)="sidenav.toggle()">
-         <mat-icon>menu</mat-icon> 
-      </button>
-      <button mat-flat-button routerLink="calendario" class="title"><img src="assets/img/digitalregister.png"></button>
-    </div>
-      <router-outlet></router-outlet>
-  </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+  <div class="example-container" style="padding: 20px" *ngIf="checkLogin(); else login">
+    <mat-sidenav-container class="example-sidenav-container">
+      <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <mat-nav-list>
+          <img src="assets/img/logo.png" class="imgnav">
+          <button mat-button (click)="logout()" class="side-nav" id="logout">Logout</button>
+          <button mat-button routerLink="studenti" id="studenti" class="side-nav">Studenti</button>
+          <br>
+          <button mat-button routerLink="professori" class="side-nav">Professori</button>
+          <br>
+          <button mat-button routerLink="materie" class="side-nav">Materie</button>
+          <br>
+          <button mat-button routerLink="calendario" class="side-nav">Calendario</button>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="menù">
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button mat-flat-button routerLink="calendario" class="title"><img
+              src="assets/img/digitalregister.png"></button>
+        </div>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
 </body>
 <ng-template #login>
-  <app-login (click)="getAuthentication()"></app-login>
+  <app-login></app-login>
 </ng-template>
-
-
-
-
-

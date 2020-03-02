@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import { AppService } from './app.service';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +9,28 @@ import { AppService } from './app.service';
 export class AppComponent {
   opened: boolean = false;
   title = 'Registro Digitale';
-  authentication : boolean = false;
 
-  constructor(private _appService: AppService){}
+  constructor(public _auth: AngularFireAuth) {
+    console.log("constructor");
+    this._auth.auth.onAuthStateChanged(user => {
+      console.log("onauthchange");
+      if (user) {
+        localStorage.setItem('token', user.uid);
+        console.log("user logged in");
+      }
+    });
 
-  getAuthentication(){
-    this.authentication = this._appService.getAuth();
-    console.log(this.authentication);
   }
-  
-}
 
+  checkLogin() {
+    if (localStorage.token) {
+      return true;
+    }
+  }
+
+  logout() {
+    this._auth.auth.signOut();
+    localStorage.removeItem('token');
+  }
+}
 

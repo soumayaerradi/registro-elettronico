@@ -8,4 +8,5 @@ export class Professore {
     telefono: string;
     codiceFisc: string;
     note: string[] = [];
+    pagaOra: number;
 }

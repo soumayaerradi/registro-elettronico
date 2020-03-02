@@ -100,3 +100,9 @@ h5 {
 .dettaglio{
   color: #4287F8;
 }
+button:focus{
+  outline: none;
+}
+td{
+  color: #666666;
+}

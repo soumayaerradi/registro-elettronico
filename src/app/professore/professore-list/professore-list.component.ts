@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Professore } from '../professore';
 import {MatDialog} from '@angular/material/dialog';
 import { FormProfessoreComponent } from '../formProfessore/formProfessore.component';
+import { DialogRemoveProfessoreComponent } from '../dialogRemoveProfessore/dialogRemoveProfessore.component';
 
 @Component({
   selector: 'app-professore-list',
@@ -54,6 +55,15 @@ export class ProfessoreListComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(FormProfessoreComponent, {
       width: '60%'
+    });
+  }
+
+  openDialogRemove(prof: Professore){
+    this.dialog.open(DialogRemoveProfessoreComponent, {
+      width: '50%',
+      data: {
+        dataKey: prof
+      }
     });
   }
 }

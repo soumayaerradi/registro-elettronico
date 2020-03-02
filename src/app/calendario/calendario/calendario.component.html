@@ -1,4 +1,4 @@
-<div class="totale" *ngIf="!isLoading; else spinner">
+<div class="totale">
   <div class="row text-center">
     <div class="col-md-4">
       <div class="btn-btn-primary">
@@ -23,8 +23,11 @@
     </mwl-calendar-month-view>
   </div>
 </div>
-<button class="btn btn-primary pull-right" (click)="addEvent();"><i class="material-icons">add_box</i></button>
-    <button class="btn btn-primary pull-right" (click)="salvaEventi(); refresh.next()"><i class="material-icons">save</i></button>
+<button class="btn btn-primary pull-right" matTooltip="Aggiungi lezione"
+[matTooltipPosition]="'below'" (click)="addEvent();"><i class="material-icons">add_box</i></button>
+<button class="btn btn-primary pull-right" matTooltip="Salva"
+[matTooltipPosition]="'below'" (click)="salvaEventi(); refresh.next()"><i
+    class="material-icons">save</i></button>
 <div>
   <div class="clearfix"></div>
   <div class="table-responsive" *ngIf="activeDayIsOpen">
@@ -54,24 +57,23 @@
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
             <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
-              (ngModelChange)="dateController(event); refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
-              dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
+              (ngModelChange)="dateController(event); refresh.next()" [altInput]="true" [convertModelValue]="true"
+              [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
             <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
-              (ngModelChange)="dateController(event); refresh.next(); " [altInput]="true" [convertModelValue]="true" [enableTime]="true"
-              dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
+              (ngModelChange)="dateController(event); refresh.next(); " [altInput]="true" [convertModelValue]="true"
+              [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set" />
           </td>
           <td *ngIf="event.start.getDate() == viewDate.getDate() && event.start.getMonth() == viewDate.getMonth()">
-            <button class="btn btn-danger" (click)="deleteEvent(event); refresh.next()"><i class="material-icons">
-              delete
-              </i></button>
+            <button class="btn btn-danger" (click)="deleteEvent(event); refresh.next()"><i
+                class="material-icons">delete</i></button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+  <button class="btn btn-danger" matTooltip="Scarica il calendario di questo mese!"
+  [matTooltipPosition]="'right'" (click)="eventiQuestoMese(); exportCalendar(); refresh.next()"><i
+      class="material-icons">cloud_download</i></button>
 </div>
-<ng-template #spinner>
-  <mat-spinner></mat-spinner>
-</ng-template>
