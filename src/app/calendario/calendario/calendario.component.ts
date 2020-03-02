@@ -107,30 +107,28 @@ export class CalendarioComponent implements OnInit {
     });
   }
 
-  genMoP(event:CalendarEvent) : string{
-    if(event.start.getHours()<12){
+  genMoP(event: CalendarEvent): string {
+    if (event.start.getHours() < 12) {
       return event.orario = 'Mattina';
-    } else{
+    } else {
       return event.orario = 'Pomeriggio';
     }
   }
 
-  eventiQuestoMese(){
+  eventiQuestoMese() {
     this.eventiMeseCorrente = [];
     this.events.forEach(element => {
-      if(isSameMonth(element.start, this.viewDate)){
+      if (isSameMonth(element.start, this.viewDate)) {
         this.eventiMeseCorrente = [
           ...this.eventiMeseCorrente,
           {
             start: element.start,
-            orario : this.genMoP(element),
+            orario: this.genMoP(element),
             title: element.title,
             prof: element.prof,
           }];
       }
     });
-    console.log('eventiMeseCorrente'+ this.eventiMeseCorrente);
-    
   }
 
   addEvent(): void {
@@ -236,7 +234,7 @@ export class CalendarioComponent implements OnInit {
   }
 
   exportCalendar(): void {
-    this._excelService.exportAsExcelFile(this.eventiMeseCorrente, "calendario");
+    this._excelService.exportAsExcelFile(this.eventiMeseCorrente, "Calendario_" + this.viewDate.toString().slice(4, 7));
   }
 
 }

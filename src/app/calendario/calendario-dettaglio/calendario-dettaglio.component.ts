@@ -79,6 +79,9 @@ export class CalendarioDettaglioComponent implements OnInit {
       if (std.storicoAPR) {
         if (std.storicoAPR[this.evento.id]) {
           this.control = true;
+          if (std.storicoAPR[this.evento.id].presenza == 'Ritardo') {
+            this.someOneRitardo = true;
+          }
         } else {
           let index = this.listaStudenti.indexOf(std);
           std.storicoAPR[this.evento.id] = {
