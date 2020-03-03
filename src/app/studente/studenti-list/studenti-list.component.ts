@@ -31,6 +31,7 @@ export class StudentiListComponent implements OnInit {
   visualizzaListaStudente() {
     this._serviceStudenti.getStudenti().subscribe(
       (listStudenti) => {
+        listStudenti.sort((el1, el2) => el1.cognome.localeCompare(el2.cognome));
         this.studenti = listStudenti;
         this.studentiNuovo = listStudenti;
       }

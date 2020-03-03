@@ -110,7 +110,13 @@ export class StudenteDettaglioComponent implements OnInit {
     for (var key in this.studente.storicoAPR) {
       let titolo = this.studente.storicoAPR[key].titolo;
       this.materie[titolo] += this.studente.storicoAPR[key].oreAss;
+      if (this.materie[titolo].toString().length > 2) {
+        this.materie[titolo] = +this.materie[titolo].toFixed(1);
+      }
       this.oreTotali += this.studente.storicoAPR[key].oreAss;
+    }
+    if (this.oreTotali.toString().length > 2) {
+      this.oreTotali = +this.oreTotali.toFixed(1);
     }
   }
 
@@ -130,7 +136,7 @@ export class StudenteDettaglioComponent implements OnInit {
   getRitardiFatti() {
     if (this.studente.storicoAPR) {
       for (var key in this.studente.storicoAPR) {
-        if (this.studente.storicoAPR[key].presenza == 'ritardo') {
+        if (this.studente.storicoAPR[key].presenza == 'Ritardo') {
           this.ritardiTotali += 1;
         }
       }

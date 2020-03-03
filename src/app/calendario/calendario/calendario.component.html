@@ -23,11 +23,12 @@
     </mwl-calendar-month-view>
   </div>
 </div>
-<button class="btn btn-primary pull-right" matTooltip="Aggiungi lezione"
-[matTooltipPosition]="'below'" (click)="addEvent();"><i class="material-icons">add_box</i></button>
-<button class="btn btn-primary pull-right" matTooltip="Salva"
-[matTooltipPosition]="'below'" (click)="salvaEventi(); refresh.next()"><i
-    class="material-icons">save</i></button>
+<button class="btn btn-primary pull-right" matTooltip="Aggiungi lezione" [matTooltipPosition]="'below'"
+  (click)="addEvent();"><i class="material-icons">add_box</i></button>
+<button class="btn btn-primary pull-right" matTooltip="Salva" [matTooltipPosition]="'below'"
+  (click)="salvaEventi(); refresh.next()"><i class="material-icons">save</i></button>
+<button class="btn btn-danger" matTooltip="Scarica il calendario di questo mese!" [matTooltipPosition]="'right'"
+  (click)="eventiQuestoMese(); exportCalendar(); refresh.next()"><i class="material-icons">cloud_download</i></button>
 <div>
   <div class="clearfix"></div>
   <div class="table-responsive" *ngIf="activeDayIsOpen">
@@ -73,7 +74,4 @@
       </tbody>
     </table>
   </div>
-  <button class="btn btn-danger" matTooltip="Scarica il calendario di questo mese!"
-  [matTooltipPosition]="'right'" (click)="eventiQuestoMese(); exportCalendar(); refresh.next()"><i
-      class="material-icons">cloud_download</i></button>
 </div>

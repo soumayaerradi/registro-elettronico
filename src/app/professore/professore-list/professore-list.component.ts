@@ -29,6 +29,7 @@ export class ProfessoreListComponent implements OnInit {
   visualizzaListaProfessori() {
     this._professoriService.getProfessori().subscribe(
       (listaProfessori) => {
+        listaProfessori.sort((el1, el2) => el1.cognome.localeCompare(el2.cognome));
         this.professori = listaProfessori;
         this.professoriNuovo = listaProfessori;
       }

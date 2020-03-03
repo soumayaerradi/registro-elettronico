@@ -35,6 +35,6 @@ export class PasswordResetComponent implements OnInit {
   }
 
   emailSended(){
-    this._snackBar.open('Email di recupero passoword inviata, controlla la posta elettronica', 'OK', { duration: this.milliseconds });
+    this._snackBar.open('Email di recupero passoword inviata, controlla la posta elettronica', '', { duration: this.milliseconds, panelClass: 'snackbar' });
   }
 }

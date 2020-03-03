@@ -33,14 +33,14 @@ export class LoginComponent implements OnInit {
     this.auth.auth.signInWithEmailAndPassword(email, password).then(() => {
       this.router.navigate(['calendario']);
     }).catch(err => {
-      this.snackBar.open('EMAIL O PASSWORD ERRATE', 'OK', { duration: this.milliseconds });
+      this.snackBar.open('email o password errate', '', { duration: this.milliseconds, panelClass: 'snackbar' });
     });
   }
 
   passwordReset(): void {
     this.dialog.open(PasswordResetComponent, {
       width: '40%',
-      height: '30%'
+      height: '50%'
     });
   }
 }
