@@ -21,7 +21,7 @@
             Cognome:
           </label>
           <mat-form-field class="input">
-            <input matInput id="cognome" type="text" formControlName="cognome"required>
+            <input matInput id="cognome" type="text" formControlName="cognome" required>
             <mat-error *ngIf="cognome.value===''">
               <span *ngIf="cognome.errors.required">Campo obbligatorio</span>
             </mat-error>
@@ -90,21 +90,24 @@
           </table>
         </div>
       </div>
-      <button mat-flat-button type="submit" class="salvaprof" [disabled]="!modificaProfessore.valid"><i class="material-icons">save</i></button>
+      <button mat-flat-button type="submit" class="salvaprof" [disabled]="!modificaProfessore.valid"><i
+          class="material-icons">save</i></button>
     </div>
   </form>
-    <form [formGroup]="nuovaNota" (ngSubmit)="onSubmitNota(nuovaNota.value); onSubmitProfessore(modificaProfessore.value)">
-      <div>
-        <div class="box-2">
-          <label for="nota"> Nota:</label>
-          <mat-form-field>
-            <input matInput id="nota" type="text" formControlName="nota" required>
-            <mat-error *ngIf="nota.invalid && (nota.dirty || nota.touched)">
-                <span *ngIf="nota.errors.required">Campo obbligatorio</span>
-            </mat-error>
+  <form [formGroup]="nuovaNota"
+    (ngSubmit)="onSubmitNota(nuovaNota.value); onSubmitProfessore(modificaProfessore.value)">
+    <div>
+      <div class="box-2">
+        <label for="nota"> Nota:</label>
+        <mat-form-field>
+          <input matInput id="nota" type="text" formControlName="nota" required>
+          <mat-error *ngIf="nota.invalid && (nota.dirty || nota.touched)">
+            <span *ngIf="nota.errors.required">Campo obbligatorio</span>
+          </mat-error>
         </mat-form-field>
-        </div>
-        <button mat-flat-button type="submit" class="salvanota" [disabled]="!nuovaNota.valid"><i class="material-icons">note_add</i></button>
       </div>
-    </form>
+      <button mat-flat-button type="submit" class="salvanota" [disabled]="!nuovaNota.valid"><i
+          class="material-icons">note_add</i></button>
+    </div>
+  </form>
 </body>

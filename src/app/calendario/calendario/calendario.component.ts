@@ -23,8 +23,9 @@ import { Professore } from 'src/app/professore/professore';
 import { ProfessoreService } from 'src/app/professore/professore.service';
 import { StudenteService } from 'src/app/studente/studente.service';
 import { Studente } from 'src/app/studente/studente';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { ExcelService } from '../excel.service';
+import { DialogRemoveEventComponent } from '../dialogRemoveEvent/dialogRemoveEvent.component';
 
 const colors = {
   red: {
@@ -62,7 +63,6 @@ export class CalendarioComponent implements OnInit {
   listaStudenti: Studente[];
   eventiNonModificati: any[] = [];
   millisecond = 2000;
-  isLoading: boolean = true;
 
   constructor(
     private router: Router,
@@ -70,7 +70,8 @@ export class CalendarioComponent implements OnInit {
     private _professoreService: ProfessoreService,
     private _studenteService: StudenteService,
     private _snackBar: MatSnackBar,
-    private _excelService: ExcelService) { }
+    private _excelService: ExcelService,
+    public dialog: MatDialog) { }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -154,11 +155,6 @@ export class CalendarioComponent implements OnInit {
     this.salvaEventi();
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this._studenteService.removeStoricoAPRevento(eventToDelete, this.listaStudenti);
-    this._calendarioService.removeEvento(eventToDelete.id.toString());
-  }
-
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
@@ -215,7 +211,6 @@ export class CalendarioComponent implements OnInit {
 
   ngOnInit() {
     this.getEventi();
-    this.isLoading = false;
     this.getProfessori();
     this.getStudenti();
   }
@@ -235,6 +230,19 @@ export class CalendarioComponent implements OnInit {
 
   exportCalendar(): void {
     this._excelService.exportAsExcelFile(this.eventiMeseCorrente, "Calendario_" + this.viewDate.toString().slice(4, 7));
+  }
+
+  salvaSnackBar(){
+    this._snackBar.open('Eventi aggiornati', '', { duration: this.millisecond, panelClass: 'snackbar'})
+  }
+
+  openDialogRemove(event: CalendarEvent){
+    this.dialog.open(DialogRemoveEventComponent, {
+      width: '50%',
+      data: {
+        evento : event
+      }
+    });
   }
 
 }

@@ -120,7 +120,6 @@ export class CalendarioDettaglioComponent implements OnInit {
     let ritardo = false;
     this.listaStudenti.forEach((std: Studente) => {
       if (std.storicoAPR[this.evento.id].presenza == 'Ritardo') {
-        console.log("checkRitardo: true");
         ritardo = true;
       }
     });

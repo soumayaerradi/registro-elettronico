@@ -11,9 +11,7 @@ export class AppComponent {
   title = 'Registro Digitale';
 
   constructor(public _auth: AngularFireAuth) {
-    console.log("constructor");
     this._auth.auth.onAuthStateChanged(user => {
-      console.log("onauthchange");
       if (user) {
         localStorage.setItem('token', user.uid);
         console.log("user logged in");

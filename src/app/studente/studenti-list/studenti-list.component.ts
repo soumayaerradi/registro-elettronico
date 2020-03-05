@@ -50,10 +50,6 @@ export class StudentiListComponent implements OnInit {
   addStudente() {
     this.router.navigate(['/studenti/nuovo']);
   }
-
-  selectStudente(selectedStudente: Studente){
-    console.log(selectedStudente);
-  }
   
   applyFilter(studente:string) {
     this.studentiNuovo = [];

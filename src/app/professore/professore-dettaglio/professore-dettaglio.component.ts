@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Location } from '@angular/common';
 import { MateriaService } from 'src/app/materia/materia.service';
 import { Materia } from 'src/app/materia/materia';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-professore-dettaglio',
   templateUrl: './professore-dettaglio.component.html',
@@ -16,13 +17,15 @@ export class ProfessoreDettaglioComponent implements OnInit {
   nuovaNota: FormGroup;
   modificaProfessore: FormGroup;
   listaMaterie: Materia[];
+  millisecond = 3000;
   constructor(
     private _professoreService: ProfessoreService,
     private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
     private _location: Location,
     public router: Router,
-    private _materiaService: MateriaService) {
+    private _materiaService: MateriaService,
+    private _snackBar: MatSnackBar) {
     this.nuovaNota = this._formBuilder.group({
       nota: '',
     });
@@ -66,6 +69,7 @@ export class ProfessoreDettaglioComponent implements OnInit {
   onSubmitProfessore(aggiornaProfessore: Professore) {
     aggiornaProfessore.codiceFisc = this.professore.codiceFisc;
     this._professoreService.aggiornaProfessore(aggiornaProfessore);
+    this.salvaSnackBar();
   }
   get nome(): AbstractControl {
     return this.modificaProfessore.get('nome');
@@ -92,5 +96,8 @@ export class ProfessoreDettaglioComponent implements OnInit {
   }
   goBack() {
     this._location.back();
+  }
+  salvaSnackBar(){
+    this._snackBar.open('Professore aggiornato', '', { duration: this.millisecond, panelClass: 'snackbar'});
   }
 }

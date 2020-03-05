@@ -7,33 +7,31 @@ import { Location } from '@angular/common';
 import { CalendarEvent } from 'angular-calendar';
 import { MateriaService } from 'src/app/materia/materia.service';
 import { Materia } from 'src/app/materia/materia';
-
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-studente-dettaglio',
   templateUrl: './studente-dettaglio.component.html',
   styleUrls: ['./studente-dettaglio.component.css']
 })
 export class StudenteDettaglioComponent implements OnInit {
-
   studente: Studente;
   materie = {};
   oreTotali = 0;
   nuovaNota: FormGroup;
   modificaStudente: FormGroup;
   ritardiTotali: number = 0;
-
+  millisecond: number = 3000;
   constructor(
     private _studenteService: StudenteService,
     private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
     private _location: Location,
     private _materieService: MateriaService,
-    public router: Router) {
-
+    public router: Router,
+    private _snackBar: MatSnackBar) {
     this.nuovaNota = this._formBuilder.group({
       nota: '',
     });
-
     this.modificaStudente = _formBuilder.group({
       nome: ['', Validators.required],
       cognome: ['', Validators.required],
@@ -45,11 +43,9 @@ export class StudenteDettaglioComponent implements OnInit {
       sesso:''
     });
   }
-
   ngOnInit() {
     this.getStudente();
   }
-
   getStudente() {
     const codice: string = this._route.snapshot.paramMap.get('codiceFisc');
     this._studenteService.getStudente(codice).subscribe((std: Studente) => {
@@ -59,7 +55,9 @@ export class StudenteDettaglioComponent implements OnInit {
       this.getMaterie();
     });
   }
-
+  salvaSnackBar(){
+    this._snackBar.open('Studente aggiornato', '', { duration: this.millisecond, panelClass: 'snackbar'});
+  }
   formStudente() {
     this.modificaStudente = this._formBuilder.group({
       nome: this.studente.nome,
@@ -75,7 +73,9 @@ export class StudenteDettaglioComponent implements OnInit {
   onSubmitStudente(aggiornaStudente: Studente) {
     aggiornaStudente.codiceFisc = this.studente.codiceFisc
     this._studenteService.aggiornaStudente(aggiornaStudente);
+    this.salvaSnackBar();
   }
+
 
   goBack() {
     this._location.back();
